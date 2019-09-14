@@ -22,7 +22,7 @@ import Chip from '@material-ui/core/Chip';
 // import FaceIcon from '@material-ui/icons/Face';
 // import DoneIcon from '@material-ui/icons/Done';
 
-const List = [
+const VOITING_IST_FULL = [
   {
     meeting : 'Согласование переезда',
     admin : 'Владимир Раменский',
