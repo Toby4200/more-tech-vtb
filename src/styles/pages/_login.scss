@@ -1,0 +1,33 @@
+  .login-page {
+
+    display: flex;
+    flex: 0 1 auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 40px);
+    &__title {
+      text-align: center;
+    }
+    &__subtitle {
+      text-align: center;
+      padding-top: 30px;
+      margin-bottom: 30px;
+      font-size: 22px;
+      font-family: Arial;
+      }
+
+  }
+.form {
+  margin-bottom: 30px;
+  max-width: 400px;
+  &__container {
+    display: flex;
+    flex-flow: column;
+
+  }
+  &__button {
+    margin-top: 20px;
+  }
+}
+
