@@ -10,9 +10,9 @@ export default class Login extends Component {
   handleClick = (e) => {
     e.preventDefault();
 
-    console.log(this.state.login);
-    console.log(this.state.role)
-    console.log(this.state.password);
+    // console.log(this.state.login);
+    // console.log(this.state.role)
+    // console.log(this.state.password);
 
     axios.post('https://next.json-generator.com/api/json/get/N17f3gUUP', {
       login: this.state.firstName,
@@ -26,24 +26,40 @@ export default class Login extends Component {
 
   handleChahge = (inputName, event) => {
   console.log('inputName', inputName);
-  this.setState({ [inputName]: event.target.value});
+  this.setState({ [inputName]:event.target.value});
   }
 
   render() {
     return (
       <div className="login-page">
+        <h4 className="login-page__title">Голосования & Обсуждения</h4>
         <div className="login-page__top">
-          <h4 className="login-page__title">Голосование</h4>
           <span className="login-page__subtitle">Войдите в свой аккаунт</span>
         </div>
           <form className="form" onSubmit={ this.handleClick }>
-            <div className="form__wrapper">
-              <div className="form__container">
-                <TextField className="form__input" onChange={ this.handleChahge.bind(this, 'login') }/>
-                <TextField className="form__input" onChange={ this.handleChahge.bind(this, 'password') }/>
-                <Button className="form__button" type="submit" variant="contained" color="primary">
-                  Войти
-                </Button>
+            <div className="card-body">
+              <div className="form__wrapper">
+                <div className="form__container">
+                  <TextField
+                    margin="normal"
+                    variant="outlined"
+                    id="outlined-name"
+                    label="Имя пользователя"
+                    className="form__input"
+                    onChange={ this.handleChahge.bind(this, 'login') }
+                  />
+                  <TextField
+                    margin="normal"
+                    variant="outlined"
+                    id="outlined-name"
+                    label="Пароль"
+                    className="form__input"
+                    onChange={ this.handleChahge.bind(this, 'password') }
+                  />
+                  <Button className="form__button" type="submit" variant="contained" color="default">
+                    Войти
+                  </Button>
+                </div>
               </div>
             </div>
           </form>
