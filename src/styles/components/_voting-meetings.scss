@@ -9,13 +9,15 @@
                font-size: 20px;
                line-height: inherit;
             }
-            .item_list{
+            .meeting-card_top{
                 display: flex;
                 flex-direction: row;
+                justify-content: space-between;
             }
            .item-edit{
                display: flex;
                flex-direction: column;
-           }
+               
+            }
     }
 }
