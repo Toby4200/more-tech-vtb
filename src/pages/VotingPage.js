@@ -22,18 +22,19 @@ export default class VotingPage extends Component {
   }
 
   render() {
-    const { title } = this.state;
+    // const { title } = this.state;
 
     return (
-      <Container maxWidth="sm">
-        <div style={{ 'padding': '15px' }}>
+      <Container maxWidth="lg" className="voting">
+        <div className="voting__container">
 
-          <Typography variant="h1" gutterBottom>{VOITING_ITEM.title}</Typography>
+          <Typography variant="h1" gutterBottom className="voting__title">{VOITING_ITEM.title}</Typography>
 
-          <Typography variant="h4" gutterBottom>{VOITING_ITEM.description}</Typography>
+          <Typography variant="h4" gutterBottom className="voting__description">{VOITING_ITEM.description}</Typography>
+
+          <Divider variant="fullWidth" />
 
         </div>
-        <Divider />
       </Container>
     );
   }

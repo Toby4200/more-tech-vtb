@@ -7,7 +7,7 @@ import Home from './Home';
 import Footer from './Footer.js';
 import VotingList from './VotingList';
 import CreateVoting from './CreateVoting';
-import VotingPage from './VotingPage.js';
+import VotingPage from '../pages/VotingPage.js';
 
 @inject('store', 'routing')
 @observer
