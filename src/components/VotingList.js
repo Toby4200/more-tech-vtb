@@ -14,27 +14,30 @@ const List = [
 		meeting : 'Согласование переезда',
         admin : 'Владимир Раменский',
         meetType : 'С таймером',
-        closed: false
+        closed: false,
+        id: '1'
 
 	},
 	{
-		meeting : 'Согласование переезда',
+		meeting : 'Удалить сайт новостроек',
         admin : 'Владимир Раменский',
         meetType : 'С таймером',
-        closed: true
-
+        closed: true,
+        id: '2'
 	},
 	{
 		meeting : 'Обед',
         admin : 'Владимир Раменский',
         meetType : 'Без таймера',
-        closed: false
+        closed: false,
+        id: '3'
 	},
 	{
         meeting : 'Планирование развития',
         admin : 'Дмитрий Корчагин',
         meetType : 'С таймером',
-        closed: true
+        closed: true,
+        id: '4'
 	}
 
 ];
@@ -50,7 +53,7 @@ export default class VotingList extends Component {
            renderVotingMeetingsActive = itemList => {
           return itemList
             .sort(i => i.closed ? 1 : -1)
-            .map(i => <VotingMeetings closed={i.closed} meeting={i.meeting} admin={i.admin} meetType={i.meetType}/>)
+            .map(i => <VotingMeetings closed={i.closed} meeting={i.meeting} admin={i.admin} meetType={i.meetType} id={i.id}/>)
         };
 
     render() {

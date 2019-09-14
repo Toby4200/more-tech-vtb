@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 import Edit from '@material-ui/icons/Edit';
 import Delete from '@material-ui/icons/Delete';
 import Fab from '@material-ui/core/Fab';
+import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
@@ -15,7 +16,8 @@ export default class VotingList extends Component {
         meeting: PropTypes.string,
         admin: PropTypes.string,
         meetType: PropTypes.string,
-        closed: undefined
+        closed: PropTypes.boolean,
+        id: PropTypes.number
     };
 
     render() {
@@ -30,7 +32,9 @@ export default class VotingList extends Component {
                 <div className='meeting-card_top'>
                 <a className='voting-entrance'>
                         <Button variant="contained">
+                            <Link to={`/voting/${this.props.id}`}> 
                             Подробнее
+                            </Link>
                         </Button>
                     </a>
                     <div className='item-edit'>
