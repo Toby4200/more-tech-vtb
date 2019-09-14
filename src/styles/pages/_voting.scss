@@ -27,3 +27,10 @@
   display: flex;
   flex-direction: column;
 }
+
+.link {
+
+  &__item {
+    margin-left: 20px;
+  }
+}

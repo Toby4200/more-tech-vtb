@@ -44,14 +44,11 @@ export default class App extends Component {
           component={CreateVoting}
         />
 
-
-
         <Route
           exact
           path='/voting'
           component={VotingPage}
         />
-
 
         <Route
           exact

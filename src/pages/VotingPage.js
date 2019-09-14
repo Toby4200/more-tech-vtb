@@ -16,6 +16,8 @@ import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import StarBorder from '@material-ui/icons/StarBorder';
 
+import Link from '@material-ui/core/Link';
+
 // То, что придет с бэка как ответ на voiting/:id
 const VOITING_ITEM = {
   title: 'Переезд в новый офис',
@@ -28,16 +30,16 @@ const VOITING_ITEM = {
       title: 'Заказать кофе машину',
       links: [
         {
-          lintText: 'кофе-машина.pdf',
+          linkText: 'кофе-машина.pdf',
           linkHref: 'https://material-ui.com/api/divider/'
         },
         {
-          lintText: 'монитор.pdf',
+          linkText: 'монитор.pdf',
           linkHref: 'https://material-ui.com/api/divider/'
         },
 
         {
-          lintText: 'стул.pdf',
+          linkText: 'стул.pdf',
           linkHref: 'https://material-ui.com/api/divider/'
         },
       ]
@@ -46,56 +48,30 @@ const VOITING_ITEM = {
       title: 'Купить мониторы',
       links: [
         {
-          lintText: 'кофе-машина.pdf',
+          linkText: 'кофе-машина.pdf',
           linkHref: 'https://material-ui.com/api/divider/'
         },
-        {
-          lintText: 'монитор.pdf',
-          linkHref: 'https://material-ui.com/api/divider/'
-        },
-
-        {
-          lintText: 'стул.pdf',
-          linkHref: 'https://material-ui.com/api/divider/'
-        },
-
-
       ]
     },
     {
       title: 'Заказать стулья',
       links: [
         {
-          lintText: 'кофе-машина.pdf',
+          linkText: 'кофе-машина.pdf',
           linkHref: 'https://material-ui.com/api/divider/'
         },
-        {
-          lintText: 'монитор.pdf',
-          linkHref: 'https://material-ui.com/api/divider/'
-        },
-
-        {
-          lintText: 'стул.pdf',
-          linkHref: 'https://material-ui.com/api/divider/'
-        },
-
-
       ]
     },
     {
       title: 'Заказать массажистку',
       links: [
         {
-          lintText: 'кофе-машина.pdf',
-          linkHref: 'https://material-ui.com/api/divider/'
-        },
-        {
-          lintText: 'монитор.pdf',
+          linkText: 'монитор.pdf',
           linkHref: 'https://material-ui.com/api/divider/'
         },
 
         {
-          lintText: 'стул.pdf',
+          linkText: 'стул.pdf',
           linkHref: 'https://material-ui.com/api/divider/'
         },
 
@@ -142,21 +118,49 @@ export default class VotingPage extends Component {
 
     const listItems = points.map((point) => {
       const {
-        title
+        title,
+        links = []
       } = point;
 
       return (
-        <ListItem button>
-          {/*<ListItemIcon>*/}
-          {/*  <SendIcon />*/}
-          {/*</ListItemIcon>*/}
-          <ListItemText primary={ title } />
-        </ListItem>
+        <div>
+          <ListItem button>
+            <ListItemText primary={ title } />
+          </ListItem>
+          <List
+            component="div"
+            disablePadding
+            className="link"
+          >
+            {
+              this.renderLinks(links)
+            }
+          </List>
 
+        </div>
       )
     })
 
     return listItems;
+  }
+
+  renderLinks = (links) => {
+    const renderLinks = links.map((link) => {
+      const {
+        linkText,
+        linkHref,
+      } = link;
+
+      return (
+        <ListItem button className="link__item" >
+          <Link href={linkHref}>
+            <ListItemText primary={linkText} />
+          </Link>
+        </ListItem>
+      )
+    });
+
+    return renderLinks;
   }
 
   render() {
@@ -169,8 +173,6 @@ export default class VotingPage extends Component {
           <Typography variant="h1" gutterBottom className="voting__title">{VOITING_ITEM.title}</Typography>
 
           <Typography variant="h4" gutterBottom className="voting__description">{VOITING_ITEM.description}</Typography>
-
-          <Divider variant="fullWidth" />
 
           <List
             component="nav"
@@ -185,24 +187,6 @@ export default class VotingPage extends Component {
             {
               this.renderPoints()
             }
-            <ListItem button>
-              {/*<ListItemIcon>*/}
-              {/*  <SendIcon />*/}
-              {/*</ListItemIcon>*/}
-              <ListItemText primary="Sent mail" />
-            </ListItem>
-
-            {/*<Collapse in={open} timeout="auto" unmountOnExit>*/}
-            {/*  <List component="div" disablePadding>*/}
-            {/*    <ListItem button className="class"*/}
-            {/*    >*/}
-            {/*      <ListItemIcon>*/}
-            {/*        <StarBorder />*/}
-            {/*      </ListItemIcon>*/}
-            {/*      <ListItemText primary="Starred" />*/}
-            {/*    </ListItem>*/}
-            {/*  </List>*/}
-            {/*</Collapse>*/}
           </List>
 
         </div>
