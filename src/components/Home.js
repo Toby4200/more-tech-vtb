@@ -108,6 +108,7 @@ export default class Home extends Component {
 							<li>✓ Maintained & up-to-date dependencies</li>
 						</ul>
 					</div>
+          <Button />
 				</main>
 			</div>
 		);
