@@ -1,0 +1,29 @@
+.voting {
+  padding-top: 150px;
+
+  &__container {
+    padding: 20px;
+
+  }
+
+  &__title {
+    font-size: 40px;
+    margin-bottom: 30px;
+    font-weight: 400;
+
+    margin-bottom: 60px;
+  }
+
+  &__description {
+    font-size: 24px;
+    background: #0000000d;
+
+    padding: 20px;
+    margin-bottom: 50px;
+  }
+}
+
+.points {
+  display: flex;
+  flex-direction: column;
+}

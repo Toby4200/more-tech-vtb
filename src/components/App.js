@@ -4,8 +4,10 @@ import { inject, observer } from 'mobx-react';
 
 import Login from './Login';
 import Home from './Home';
+import Footer from './Footer.js';
 import VotingList from './VotingList';
 import CreateVoting from './CreateVoting';
+import VotingPage from '../pages/VotingPage.js';
 
 @inject('store', 'routing')
 @observer
@@ -26,27 +28,38 @@ export default class App extends Component {
 		return (
 			<div className='wrapper'>
         <Route
-					exact
-					path='/'
-					component={Home}
-				/>
+          exact
+          path='/'
+          component={Home}
+        />
 
-				<Route
-					path='/login'
-					component={Login}
-				/>
+        <Route
+          exact
+          path='/voting-list'
+          component={VotingList}
+        />
 
-				<Route
-					path='/create-voting'
-					component={CreateVoting}
-				/>
-				<Route
-					exact
-					path='/voting-list'
-					render={props => (
-						<Route {...props} component={VotingList} />
-					)}
-				/>
+        <Route
+          path='/create-voting'
+          component={CreateVoting}
+        />
+
+
+
+        <Route
+          exact
+          path='/voting'
+          component={VotingPage}
+        />
+
+
+        <Route
+          exact
+          path='/login'
+          component={Login}
+        />
+
+        <Footer />
 			</div>
 		);
 	}

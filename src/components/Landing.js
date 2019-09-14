@@ -72,7 +72,6 @@ export default class Landing extends Component {
             <input type="submit" value="Отправить" className="button"
             />
           </form>
-
         </div>
       </div>
     )
