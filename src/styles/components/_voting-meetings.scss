@@ -1,5 +1,7 @@
-.voting-list__meetings__item{
-    padding: 10px;
-    background-color: #666666;
-    height: auto;
+.meetings-item_container{
+    margin-bottom: 15px;
+    .voting-list__meetings__item{
+        padding: 10px;
+        height: auto;
+    }
 }

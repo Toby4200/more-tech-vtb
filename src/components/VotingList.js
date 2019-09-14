@@ -58,9 +58,12 @@ export default class VotingList extends Component {
               <Typography variant="h4" gutterBottom>{title}</Typography>
             </div>
             <Divider />
-            {this.renderVotingMeetingsActive(List)}
-            {this.renderVotingMeetingsDisabled(List)}
-
+            <div className='meetings-item_container'>
+                {this.renderVotingMeetingsActive(List)}
+            </div>
+            <div className='meetings-item_container'>
+                {this.renderVotingMeetingsDisabled(List)}
+            </div>
           </Container>
         );
       }
