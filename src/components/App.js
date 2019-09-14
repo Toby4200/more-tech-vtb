@@ -10,7 +10,7 @@ import Header from './Header';
 @inject('store', 'routing')
 @observer
 export default class App extends Component {
-	constructor(props) {
+	constructor(props) { 
 		super(props);
 
 		this.store = this.props.store;
