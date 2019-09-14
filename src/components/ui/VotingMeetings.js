@@ -5,9 +5,12 @@ import Button from '@material-ui/core/Button';
 import Edit from '@material-ui/icons/Edit';
 import Delete from '@material-ui/icons/Delete';
 import Fab from '@material-ui/core/Fab';
-import {Link} from 'react-router-dom';
+import {Link, push} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import { createBrowserHistory } from 'history';
+
+const history = createBrowserHistory();
 
 
 
@@ -30,6 +33,13 @@ export default class VotingList extends Component {
             </React.Fragment>)
         }
     }
+
+    handleBtnClick = (id = 1) => {
+        console.log('click', id);
+        // history.push(`/voting/${ 1 }`);
+        history.push(`/login`);
+    }
+
     render() {
         const isDateOfEndRender = this.props.closed || this.props.meetType=='Срочная';
         return (
@@ -54,10 +64,14 @@ export default class VotingList extends Component {
                 </div>
                 <div className='meeting-card_top'>
                 <a className='voting-entrance'>
-                        <Button variant="contained">
-                            <Link to={`/voting/${this.props.id}`}>
+                            {/* <Link to={`/voting/1`}>
+                                Подробнее
+                            </Link> */}
+                        <Button
+                            variant="contained"
+                            onClick={ this.handleBtnClick }
+                        > 
                             Подробнее
-                            </Link>
                         </Button>
                     </a>
                     <div className='item-edit'>
