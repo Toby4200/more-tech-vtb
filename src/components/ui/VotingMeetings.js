@@ -22,26 +22,26 @@ export default class VotingList extends Component {
         return (
         <div className="voting-list__meetings">
             <ExpansionPanel className='voting-list__meetings' defaultExpanded='true' disabled={this.props.closed}>
-                <div className='voting-list__meetings meeting-card_top'>
-                    <div className='item_list'>
-                        <Typography className='item-name_first'><h1>{this.props.meeting}</h1></Typography>
-                        <Typography className='item-name_second'>Организатор: {this.props.admin}</Typography>
-                        <Typography className='item-name_third'>Тип голосования: {this.props.meetType}</Typography>
-                    </div>
-                    <div className='item-edit'>
-                        <Fab disabled={this.props.closed} color="secondary" aria-label="edit" style={{'marginBottom':'15px'}}>
-                            <Edit />
-                        </Fab>
-                        <Fab disabled={this.props.closed} aria-label="delete">
-                            <Delete />
-                        </Fab>
-                    </div>
+                <div className='item_list'>
+                    <Typography className='meeting-item_first'><h1>{this.props.meeting}</h1></Typography>
+                    <Typography className='meeting-item_second'>Организатор: </Typography>{this.props.admin} <br/>
+                    <Typography className='meeting-item_third'>Тип голосования: </Typography>{this.props.meetType}
                 </div>
-                <a className='voting'>
+                <div className='meeting-card_top'>
+                <a className='voting-entrance'>
                         <Button variant="contained">
                             Подробнее
                         </Button>
-                </a>
+                    </a>
+                    <div className='item-edit'>
+                        <Fab className='voting-meeting_change-button' disabled={this.props.closed} color="secondary" aria-label="edit" style={{'marginRight':'15px'}}>
+                            <Edit className='change-button_icon'/>
+                        </Fab>
+                        <Fab className='voting-meeting_change-button' disabled={this.props.closed} aria-label="delete">
+                            <Delete className='change-button_icon'/>
+                        </Fab>
+                    </div>
+                </div>
             </ExpansionPanel>
         </div>
         )

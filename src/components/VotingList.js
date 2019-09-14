@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography'
-import Divider from '@material-ui/core/Divider'
 import VotingMeetings from './ui/VotingMeetings'
 import TextField from '@material-ui/core/TextField';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
@@ -59,10 +58,9 @@ export default class VotingList extends Component {
         const {title} = this.state;
         return (
             <Container maxWidth="sm">
-            <div style={{'padding': '15px 0 15px 0'}}>
+            <div style={{'padding': '50px 0 15px 15px'}}>
               <Typography variant="h4" gutterBottom>{title}</Typography>
             </div>
-            <Divider />
             <div className='meetings-item_container'>
                 {this.renderVotingMeetingsActive(List)}
             </div>
