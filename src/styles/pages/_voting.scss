@@ -34,3 +34,46 @@
     margin-left: 20px;
   }
 }
+
+.voting-header {
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: 30px;
+}
+
+.status {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__title {
+    font-size: 22px;
+    margin-right: 5px;
+  }
+
+  &__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.timer {
+
+  &__item {
+
+  }
+
+  //&__ {
+  //
+  //}
+  //
+  //&__ {
+  //
+  //}
+  //
+  //&__ {
+  //
+  //}
+}
