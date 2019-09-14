@@ -17,22 +17,45 @@ export default class VotingList extends Component {
         admin: PropTypes.string,
         meetType: PropTypes.string,
         closed: PropTypes.boolean,
-        id: PropTypes.number
+        id: PropTypes.number,
+        dateOfBegin: PropTypes.string,
+        status: PropTypes.string
     };
 
+    renderDateOfEnd = (date) => {
+        if (this.props.closed || this.props.meetType=='Срочная'){
+        return(
+            <React.Fragment>
+                <Typography className={'meeting-item_fivth'}>Дата окончания: </Typography>date
+            </React.Fragment>)
+        }
+    }
     render() {
+        const isDateOfEndRender = this.props.closed || this.props.meetType=='Срочная';
         return (
         <div className="voting-list__meetings">
             <ExpansionPanel className='voting-list__meetings' defaultExpanded='true' disabled={this.props.closed}>
                 <div className='item_list'>
-                    <Typography className='meeting-item_first'><h1>{this.props.meeting}</h1></Typography>
-                    <Typography className='meeting-item_second'>Организатор: </Typography>{this.props.admin} <br/>
-                    <Typography className='meeting-item_third'>Тип голосования: </Typography>{this.props.meetType}
+                        <Typography className='meeting-item_first'><h1>{this.props.meeting}</h1></Typography>
+                    <tr>
+                        <th scope='row'><Typography className='meeting-item_second'>Организатор: </Typography></th><td>{this.props.admin} <br/></td>
+                    </tr>
+                    <tr>
+                        <th scope='row'><Typography className='meeting-item_third'>Тип голосования: </Typography></th><td>{this.props.meetType}<br/></td>
+                    </tr>
+                    <tr>
+                        <th scope='row'><Typography className='meeting-item_fourth'>Дата начала: </Typography></th><td>{this.props.dateOfBegin} <br/></td>
+                    </tr>
+                        {isDateOfEndRender && (<tr><th scope='row'><Typography className={'meeting-item_fivth'}>Дата окончания: </Typography></th><td>{this.props.dateOfEnd}<br/></td></tr>)}
+                    <tr>
+                        <th scope='row'><Typography className='meeting-item_sixth'>Статус: </Typography></th><td>{this.props.status}</td>
+                    </tr>
+
                 </div>
                 <div className='meeting-card_top'>
                 <a className='voting-entrance'>
                         <Button variant="contained">
-                            <Link to={`/voting/${this.props.id}`}> 
+                            <Link to={`/voting/${this.props.id}`}>
                             Подробнее
                             </Link>
                         </Button>

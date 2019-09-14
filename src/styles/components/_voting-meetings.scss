@@ -6,20 +6,23 @@
 
             .item_list{
                 .meeting-item{
-                    &_second, &_third{
+                    &_second, &_third, &_fourth, &_fivth, &_sixth{
                         display: inline-block;
                         margin-right: 5px;
                         font-weight: 500;
                     }
                 }
+                h1{
+                    font-family: Roboto;
+                    font-size: 20px;
+                    line-height: 1;
+                    margin-bottom: 10px
+                }
+                tr{
+                    text-align: left;
+                }
             }
 
-            .item_list h1{
-               font-family: Roboto;
-               font-size: 20px;
-               line-height: 1;
-               margin-bottom: 10px
-            }
             .meeting-card_top{
                 display: flex;
                 flex-direction: row;

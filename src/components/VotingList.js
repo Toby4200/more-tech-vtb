@@ -13,31 +13,44 @@ const List = [
     {
 		meeting : 'Согласование переезда',
         admin : 'Владимир Раменский',
-        meetType : 'С таймером',
+        meetType : 'Бессрочная',
         closed: false,
-        id: '1'
+        id: '1',
+        dateOfBegin: '21 - 09 - 2019 13:48',
+        dateOfEnd: '22 - 09 - 2019 13:40',
+        status: 'В работе'
+
 
 	},
 	{
 		meeting : 'Удалить сайт новостроек',
         admin : 'Владимир Раменский',
-        meetType : 'С таймером',
+        meetType : 'Бессрочная',
         closed: true,
-        id: '2'
+        id: '2',
+        dateOfBegin: '20 - 09 - 2019 12:39',
+        dateOfEnd: '20 - 09 - 2019 13:40',
+        status: 'Согласовано'
 	},
 	{
 		meeting : 'Обед',
         admin : 'Владимир Раменский',
-        meetType : 'Без таймера',
+        meetType : 'Срочная',
         closed: false,
-        id: '3'
+        id: '3',
+        dateOfBegin:'19 - 09 - 2019 21:39',
+        dateOfEnd: '19 - 09 - 2019 22:00',
+        status: 'В работе'
 	},
 	{
         meeting : 'Планирование развития',
         admin : 'Дмитрий Корчагин',
-        meetType : 'С таймером',
+        meetType : 'Бессрочная',
         closed: true,
-        id: '4'
+        id: '4',
+        dateOfBegin: '18 - 09 - 2019 20:39',
+        dateOfEnd: '18 - 09 - 2019 23:40',
+        status: 'Несогласовано'
 	}
 
 ];
@@ -53,7 +66,7 @@ export default class VotingList extends Component {
            renderVotingMeetingsActive = itemList => {
           return itemList
             .sort(i => i.closed ? 1 : -1)
-            .map(i => <VotingMeetings closed={i.closed} meeting={i.meeting} admin={i.admin} meetType={i.meetType} id={i.id}/>)
+            .map(i => <VotingMeetings status={i.status} closed={i.closed} meeting={i.meeting} admin={i.admin} meetType={i.meetType} id={i.id} dateOfBegin={i.dateOfBegin} dateOfEnd={i.dateOfEnd}/>)
         };
 
     render() {
