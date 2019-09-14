@@ -11,7 +11,8 @@ import App from './components/App';
 import stores from './stores/stores';
 
 import { RouterStore, syncHistoryWithStore } from 'mobx-react-router';
-import createBrowserHistory from 'history/createBrowserHistory';
+
+const createBrowserHistory = require('history').createBrowserHistory;
 
 const store = rehydrate();
 
