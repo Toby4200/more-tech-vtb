@@ -11,24 +11,31 @@ import Button from '@material-ui/core/Button';
 import axios from 'axios';
 
 const List = [
+    {
+		meeting : 'Согласование переезда',
+        admin : 'Владимир Раменский',
+        meetType : 'С таймером',
+        closed: false
+
+	},
 	{
 		meeting : 'Согласование переезда',
         admin : 'Владимир Раменский',
-        meetType : 'Открытая',
-       // active: true
+        meetType : 'С таймером',
+        closed: true
 
 	},
 	{
 		meeting : 'Обед',
         admin : 'Владимир Раменский',
-        meetType : 'Закрытая',
-//        active: false
+        meetType : 'Без таймера',
+        closed: false
 	},
 	{
         meeting : 'Планирование развития',
         admin : 'Дмитрий Корчагин',
-        meetType : 'Открытая',
-  //      active: true
+        meetType : 'С таймером',
+        closed: true
 	}
 
 ];
@@ -42,27 +49,22 @@ export default class VotingList extends Component {
         };
       }
            renderVotingMeetingsActive = itemList => {
-          return itemList.map(i => <VotingMeetings status={true} meeting={i.meeting} admin={i.admin} meetType={i.meetType}/>)
+          return itemList
+            .sort(i => i.closed ? 1 : -1)
+            .map(i => <VotingMeetings closed={i.closed} meeting={i.meeting} admin={i.admin} meetType={i.meetType}/>)
         };
-
-        renderVotingMeetingsDisabled = itemList => {
-            return itemList.map(i => <VotingMeetings status={false} meeting={i.meeting} admin={i.admin} meetType={i.meetType}/>)
-          };
 
     render() {
         const store = this.store;
         const {title} = this.state;
         return (
             <Container maxWidth="sm">
-            <div style={{ 'padding': '15px' }}>
+            <div style={{'padding': '15px 0 15px 0'}}>
               <Typography variant="h4" gutterBottom>{title}</Typography>
             </div>
             <Divider />
             <div className='meetings-item_container'>
                 {this.renderVotingMeetingsActive(List)}
-            </div>
-            <div className='meetings-item_container'>
-                {this.renderVotingMeetingsDisabled(List)}
             </div>
           </Container>
         );

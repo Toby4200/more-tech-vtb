@@ -1,26 +1,45 @@
 import React, { Component } from 'react';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import Typography from '@material-ui/core/Typography';
-import { string, number, boolean, shape } from 'prop-types';
+import Button from '@material-ui/core/Button';
+import Edit from '@material-ui/icons/Edit';
+import Delete from '@material-ui/icons/Delete';
+import Fab from '@material-ui/core/Fab';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 
 
 
 export default class VotingList extends Component {
     static propTypes={
-        meeting: string,
-        admin: string,
-        meetType: string,
-        status: boolean
+        meeting: PropTypes.string,
+        admin: PropTypes.string,
+        meetType: PropTypes.string,
+        closed: undefined
     };
 
     render() {
         return (
         <div className="voting-list__meetings">
-            <ExpansionPanel className='voting-list__meetings__item' defaultExpanded='true' disabled={this.props.status}>
-                <Typography className='item-name_first'>{this.props.meeting}</Typography>
-                <Typography className='item-name_second'>{this.props.admin}</Typography>
-                <Typography className='item-name_third'>{this.props.meetType}</Typography>
+            <ExpansionPanel className='voting-list__meetings' defaultExpanded='true' disabled={this.props.closed}>
+                <div className='item_list'>
+                    <Typography className='item-name_first'><h1>{this.props.meeting}</h1></Typography>
+                    <Typography className='item-name_second'>Организатор: {this.props.admin}</Typography>
+                    <Typography className='item-name_third'>Тип голосования: {this.props.meetType}</Typography>
+                </div>
+                <div className='item-edit'>
+                    <Fab disabled={this.props.closed} color="secondary" aria-label="edit">
+                        <Edit />
+                    </Fab>
+                    <Fab disabled={this.props.closed} aria-label="delete">
+                        <Delete />
+                    </Fab>
+                </div>
+                <a className='voting'>
+                        <Button variant="contained">
+                            Подробнее
+                        </Button>
+                </a>
             </ExpansionPanel>
         </div>
         )

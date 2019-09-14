@@ -1,7 +1,21 @@
 .meetings-item_container{
-    margin-bottom: 15px;
-    .voting-list__meetings__item{
-        padding: 10px;
-        height: auto;
+    .voting-list__meetings{
+            height: auto;
+            margin-bottom: 15px;
+            padding: 15px;
+
+            .item_list h1{
+               font-family: Roboto;
+               font-size: 20px;
+               line-height: inherit;
+            }
+            .item_list{
+                display: flex;
+                flex-direction: row;
+            }
+           .item-edit{
+               display: flex;
+               flex-direction: column;
+           }
     }
 }
