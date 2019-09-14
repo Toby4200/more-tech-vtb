@@ -62,7 +62,7 @@ export default class App extends Component {
 					exact
 					path='/login'
 					render={props => (
-						<LazyRoute {...props} component={import('./Login')} />
+						<LazyRoute {...props} component={import('./login')} />
 					)}
 				/>
 
