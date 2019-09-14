@@ -5,7 +5,7 @@ import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
 
-export default class LoginPage extends Component {
+export default class Login extends Component {
 
   handleClick = (e) => {
     e.preventDefault();
@@ -24,42 +24,35 @@ export default class LoginPage extends Component {
       })
   }
 
-  handleChahge = (inputName, event) => {
-    this.setState({ [inputName]: event.target.value});
-  }
-
+  // handleChahge = (inputName, event) => {
+  //   console.log('inputName', inputName);
+  //   this.setState({ [inputName]: event.target.value});
+  // }
 
   render() {
-
-    const loginPage = {
-      display: 'flex',
-      flexDirection: 'row',
-      flexWrap: 'nowrap',
-      justifyContent: 'space-around',
-      alignItems: 'baseline',
-      alignContent: 'stretch'
-    }
-
-
     return (
-      <div className="login-page" style={loginPage} >
+      <div className="login-page">
         <div className="login-page__top">
+          <h4 className="login-page__title">Голосование</h4>
           <span className="login-page__subtitle">Войдите в свой аккаунт</span>
-          ​
+        </div>
           <form className="form" onSubmit={ this.handleClick }>
             <div className="form__wrapper">
               <div className="form__container">
                 <TextField className="form__input" onChange={ this.handleChahge.bind(this, 'login') }/>
-                <br/>
                 <TextField className="form__input" onChange={ this.handleChahge.bind(this, 'password') }/>
+                <Button className="form__button" type="submit" variant="contained" color="primary">
+                  Войти
+                </Button>
               </div>
             </div>
-              ​
-              <input type="submit" value="Отправить" className="button"/>
-            </form>
-            ​
-          </div>
+          </form>
         </div>
-      )
-    }
+    )
   }
+}
+
+
+
+
+
