@@ -10,7 +10,7 @@ import Header from './Header';
 @inject('store', 'routing')
 @observer
 export default class App extends Component {
-	constructor(props) { 
+	constructor(props) {
 		super(props);
 
 		this.store = this.props.store;
@@ -62,7 +62,7 @@ export default class App extends Component {
 					exact
 					path='/login'
 					render={props => (
-						<LazyRoute {...props} component={import('./Login')} />
+						<LazyRoute {...props} component={import('./login')} />
 					)}
 				/>
 
