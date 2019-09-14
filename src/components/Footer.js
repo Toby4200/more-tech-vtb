@@ -13,13 +13,6 @@ export default class Footer extends Component {
   render() {
     return(
       <footer>
-        <a href='https://twitter.com/alexdevero' target='_blank'>@alexdevero</a>
-
-        {' '}
-        | github:
-        {' '}
-
-        <a href='https://github.com/alexdevero' target='_blank'>alexdevero</a>
       </footer>
     )
   }
