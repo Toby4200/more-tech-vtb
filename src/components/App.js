@@ -46,7 +46,7 @@ export default class App extends Component {
 
         <Route
           exact
-          path='/voting'
+          path='/voting/:id'
           component={VotingPage}
         />
 

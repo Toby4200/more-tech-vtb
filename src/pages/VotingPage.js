@@ -113,6 +113,12 @@ export default class VotingPage extends Component {
     };
   }
 
+  componentDidMount() {
+    const { id } = this.props.match.params
+
+    console.log('id', id)
+  }
+
   renderPoints = () => {
     const {
       points = []
