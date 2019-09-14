@@ -24,10 +24,10 @@ export default class Login extends Component {
       })
   }
 
-  // handleChahge = (inputName, event) => {
-  //   console.log('inputName', inputName);
-  //   this.setState({ [inputName]: event.target.value});
-  // }
+  handleChahge = (inputName, event) => {
+  console.log('inputName', inputName);
+  this.setState({ [inputName]: event.target.value});
+  }
 
   render() {
     return (
