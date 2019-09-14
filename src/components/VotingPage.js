@@ -13,7 +13,6 @@ const VOITING_ITEM = {
 };
 
 
-
 export default class VotingPage extends Component {
   constructor(props) {
     super(props);
