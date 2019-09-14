@@ -4,12 +4,13 @@ import { inject, observer } from 'mobx-react';
 
 import Login from './Login';
 import Home from './Home';
+import VotingList from './VotingList';
 import CreateVoting from './CreateVoting';
 
 @inject('store', 'routing')
 @observer
 export default class App extends Component {
-	constructor(props) { 
+	constructor(props) {
 		super(props);
 
 		this.store = this.props.store;
@@ -38,6 +39,13 @@ export default class App extends Component {
 				<Route
 					path='/create-voting'
 					component={CreateVoting}
+				/>
+				<Route
+					exact
+					path='/voting-list'
+					render={props => (
+						<Route {...props} component={VotingList} />
+					)}
 				/>
 			</div>
 		);
