@@ -17,8 +17,12 @@ import HourglassEmptyIcon from '@material-ui/icons/HourglassEmpty';
 import Link from '@material-ui/core/Link';
 
 import Countdown from 'react-countdown-now';
+import Avatar from '@material-ui/core/Avatar';
+import Chip from '@material-ui/core/Chip';
+// import FaceIcon from '@material-ui/icons/Face';
+// import DoneIcon from '@material-ui/icons/Done';
 
-const List = [
+const VOITING_IST_FULL = [
   {
     meeting : 'Согласование переезда',
     admin : 'Владимир Раменский',
@@ -207,9 +211,18 @@ export default class VotingPage extends Component {
 
       return (
         <ListItem className="link__item" >
-          <Link href={linkHref}>
-            <ListItemText primary={linkText} />
-          </Link>
+          <Chip
+            label={ linkText }
+            className="class"
+            clickable
+            href={ linkHref }
+            component="a"
+          >
+          </Chip>
+
+          {/*<Link href={linkHref}>*/}
+          {/*  <ListItemText primary={linkText} />*/}
+          {/*</Link>*/}
         </ListItem>
       )
     });
@@ -233,43 +246,55 @@ export default class VotingPage extends Component {
       <Container maxWidth="lg" className="voting">
         <div className="voting__container">
 
-          {/* А это выключается когда встреча завершается */}
+          <div className="voting__left-container">
+            {/* А это выключается когда встреча завершается */}
+            <div className="voting__header voting-header">
 
-          <div className="voting__header voting-header">
+              <div className="status">
+                <span className="status__title">Статус | </span>
+                <span className="status__description">in progress</span>
 
-            <div className="status">
-              <span className="status__title">Статус | </span>
-              <span className="status__description">in progress</span>
-              {/*<span className="status__icon">*/}
+                {/* Может пригодиться во втором статусе */}
+                {/*<span className="status__icon">*/}
                 {/*<SendIcon/>*/}
-              {/*</span>*/}
+                {/*</span>*/}
+              </div>
+
+              {
+                this.renderTimer()
+              }
             </div>
 
-            {
-              this.renderTimer()
-            }
+            {/* Тут будет плашка */}
+
+            <Typography variant="h1" gutterBottom className="voting__title">{VOITING_ITEM.title}</Typography>
+
+            <Typography variant="h4" gutterBottom className="voting__description">{VOITING_ITEM.description}</Typography>
+
+            <List
+              component="nav"
+              aria-labelledby="nested-list-subheader"
+              className="points"
+            >
+              <span className="points__title">Список пунктов для согласования</span>
+              {
+                this.renderPoints()
+              }
+            </List>
+
           </div>
 
-          {/* Тут будет плашка */}
+          <div className="voting__right-container">
+            <div className="people">
 
-          <Typography variant="h1" gutterBottom className="voting__title">{VOITING_ITEM.title}</Typography>
 
-          <Typography variant="h4" gutterBottom className="voting__description">{VOITING_ITEM.description}</Typography>
+            </div>
 
-          <List
-            component="nav"
-            aria-labelledby="nested-list-subheader"
-            subheader={
-              <ListSubheader component="div" id="nested-list-subheader">
-                Список пунктов для согласования
-              </ListSubheader>
-            }
-            className="points"
-          >
-            {
-              this.renderPoints()
-            }
-          </List>
+            <div className="chat">
+
+            </div>
+
+          </div>
 
         </div>
       </Container>
