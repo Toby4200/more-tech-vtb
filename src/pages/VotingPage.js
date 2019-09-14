@@ -22,6 +22,49 @@ import Chip from '@material-ui/core/Chip';
 // import FaceIcon from '@material-ui/icons/Face';
 // import DoneIcon from '@material-ui/icons/Done';
 
+const List = [
+  {
+    meeting : 'Согласование переезда',
+    admin : 'Владимир Раменский',
+    meetType : 'Бессрочная',
+    closed: false,
+    id: '1',
+    dateOfBegin: '21 - 09 - 2019 13:48',
+    dateOfEnd: '22 - 09 - 2019 13:40',
+    status: 'В работе'
+  },
+  {
+    meeting : 'Удалить сайт новостроек',
+    admin : 'Владимир Раменский',
+    meetType : 'Бессрочная',
+    closed: true,
+    id: '2',
+    dateOfBegin: '20 - 09 - 2019 12:39',
+    dateOfEnd: '20 - 09 - 2019 13:40',
+    status: 'Согласовано'
+  },
+  {
+    meeting : 'Обед',
+    admin : 'Владимир Раменский',
+    meetType : 'Срочная',
+    closed: false,
+    id: '3',
+    dateOfBegin:'19 - 09 - 2019 21:39',
+    dateOfEnd: '19 - 09 - 2019 22:00',
+    status: 'В работе'
+  },
+  {
+    meeting : 'Планирование развития',
+    admin : 'Дмитрий Корчагин',
+    meetType : 'Бессрочная',
+    closed: true,
+    id: '4',
+    dateOfBegin: '18 - 09 - 2019 20:39',
+    dateOfEnd: '18 - 09 - 2019 23:40',
+    status: 'Несогласовано'
+  }
+];
+
 // То, что придет с бэка как ответ на voiting/:id
 const VOITING_ITEM = {
   title: 'Переезд в новый офис',
