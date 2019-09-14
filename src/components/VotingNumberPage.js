@@ -40,7 +40,7 @@ export default class VotingNumberPage extends Component {
       <div className="voting-number-page">
         <div className="about-us">
           <div className="about-us__top">
-            <h1 className="about-us__title">contact us</h1>
+            <h1 className="about-us__title">Страница голосования</h1>
 
             <span className="about-us__subtitle">Lorem ispum sed isem fed</span>
           </div>

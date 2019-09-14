@@ -17,7 +17,7 @@ export default class VotingPage extends Component {
       <div className="voting">
         <div className="about-us">
           <div className="about-us__top">
-            <h1 className="about-us__title">contact us</h1>
+            <h1 className="about-us__title">Старница создания голосования</h1>
 
             <span className="about-us__subtitle">Lorem ispum sed isem fed</span>
           </div>
