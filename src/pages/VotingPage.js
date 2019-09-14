@@ -265,11 +265,15 @@ export default class VotingPage extends Component {
               }
             </div>
 
+            <div className="divider"></div>
+
+
             {/* Тут будет плашка */}
 
             <Typography variant="h1" gutterBottom className="voting__title">{VOITING_ITEM.title}</Typography>
 
-            <Typography variant="h4" gutterBottom className="voting__description">{VOITING_ITEM.description}</Typography>
+            <Typography variant="h4" gutterBottom className="voting__description">Описание</Typography>
+            <div variant="h4"className="voting__description-text">{VOITING_ITEM.description}</div>
 
             <List
               component="nav"
