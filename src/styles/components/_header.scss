@@ -1,0 +1,36 @@
+// Header component
+
+.header {
+  display: flex;
+  flex: 0 1 auto;
+  align-items: center;
+  padding: 0 24px;
+  width: 100%;
+  height: 70px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid #00000014;
+  justify-content: space-between;
+
+  &__logo {
+    height: 60px;
+
+    img {
+      height: 60px;
+    }
+  }
+
+  &__link-container {
+
+  }
+
+  &__link-items {
+    display: flex;
+    padding-left: 0;
+  }
+
+  &__item {
+    padding: 5px 15px;
+    list-style: none;
+  }
+}
+
