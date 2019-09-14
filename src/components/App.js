@@ -6,7 +6,9 @@ import Login from './Login';
 import Home from './Home';
 import Footer from './Footer.js';
 import VotingList from './VotingList';
-import CreateVoting from './CreateVoting';
+import CreateVoting from './CreateVoting'
+import Landing from './Landing';
+
 
 @inject('store', 'routing')
 @observer
@@ -46,6 +48,11 @@ export default class App extends Component {
           exact
           path='/login'
           component={Login}
+        />
+        <Route
+          exact
+          path='/landing'
+          component={Landing}
         />
 
         <Footer />
