@@ -10,7 +10,7 @@ import Header from './Header';
 @inject('store', 'routing')
 @observer
 export default class App extends Component {
-	constructor(props) { 
+	constructor(props) {
 		super(props);
 
 		this.store = this.props.store;
@@ -39,6 +39,22 @@ export default class App extends Component {
           path='/landing'
           render={props => (
             <LazyRoute {...props} component={import('./Landing')} />
+          )}
+        />
+
+        <Route
+          exact
+          path='/votingPage'
+          render={props => (
+            <LazyRoute {...props} component={import('./VotingPage')} />
+          )}
+        />
+
+        <Route
+          exact
+          path='/votingNumberPage'
+          render={props => (
+            <LazyRoute {...props} component={import('./VotingNumberPage')} />
           )}
         />
 
