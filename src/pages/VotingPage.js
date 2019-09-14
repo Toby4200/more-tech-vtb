@@ -74,32 +74,11 @@ const VOITING_ITEM = {
           linkText: 'стул.pdf',
           linkHref: 'https://material-ui.com/api/divider/'
         },
-
-
       ]
     },
 
   ]
 };
-
-
-/*
-title: '',
-  description: '',
-  newPoint: {
-  title: ''
-},
-points: [
-  {
-    title: 'Пункт 1',
-    links: []
-  },
-  {
-    title: 'Пункт 2',
-    links: []
-  }
-]
-*/
 
 
 export default class VotingPage extends Component {
@@ -124,9 +103,12 @@ export default class VotingPage extends Component {
 
       return (
         <div>
-          <ListItem button>
-            <ListItemText primary={ title } />
+          <ListItem>
+            <ListItemText
+              primary={ title }
+            />
           </ListItem>
+
           <List
             component="div"
             disablePadding
@@ -152,7 +134,7 @@ export default class VotingPage extends Component {
       } = link;
 
       return (
-        <ListItem button className="link__item" >
+        <ListItem className="link__item" >
           <Link href={linkHref}>
             <ListItemText primary={linkText} />
           </Link>
@@ -164,7 +146,6 @@ export default class VotingPage extends Component {
   }
 
   render() {
-    // const { title } = this.state;
 
     return (
       <Container maxWidth="lg" className="voting">
