@@ -49,6 +49,13 @@
 
   &__title {
     font-size: 22px;
+    font-weight: bold;
+    margin-right: 5px;
+  }
+
+  &__description {
+    font-size: 18px;
+    font-style: italic;
     margin-right: 5px;
   }
 
@@ -62,16 +69,19 @@
 .timer {
 
   &__item {
+    font-style: italic;
+  }
+
+  &__icon {
+    display: flex;
+    justify-content: flex-end;
 
   }
 
-  //&__ {
-  //
-  //}
-  //
-  //&__ {
-  //
-  //}
+  &__word {
+    font-size: 12px;
+  }
+
   //
   //&__ {
   //

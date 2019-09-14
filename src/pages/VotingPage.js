@@ -91,13 +91,13 @@ const renderer = ({ hours, minutes, seconds, completed }) => {
 
       <div className="timer__countdown-container">
         {
-          hours ? <span className="timer__item timer__hours">{hours} ч : </span> : ''
+          hours ? <span className="timer__item timer__hours">{hours} <span className="timer__word">ч</span> : </span> : ''
         }
         {
-          minutes ? <span className="timer__item timer__minutes">{minutes} мин : </span> : ''
+          minutes ? <span className="timer__item timer__minutes">{minutes} <span className="timer__word">мин</span> : </span> : ''
         }
         {
-          seconds ? <span className="timer__item timer__seconds">{seconds} сек</span> : ''
+          seconds ? <span className="timer__item timer__seconds">{seconds} <span className="timer__word">сек</span></span> : ''
         }
       </div>
     </div>);
@@ -189,10 +189,11 @@ export default class VotingPage extends Component {
           <div className="voting__header voting-header">
 
             <div className="status">
-              <span className="status__title">Статус:</span>
-              <span className="status__icon">
-                <SendIcon/>
-              </span>
+              <span className="status__title">Статус | </span>
+              <span className="status__description">in progress</span>
+              {/*<span className="status__icon">*/}
+                {/*<SendIcon/>*/}
+              {/*</span>*/}
             </div>
 
             {
