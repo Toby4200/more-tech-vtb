@@ -12,7 +12,6 @@ const VOITING_ITEM = {
     'чтобы можно было приглашать людей для знакомства в наш офис - в нем должно быть комфортно ',
 };
 
-
 export default class VotingPage extends Component {
   constructor(props) {
     super(props);
