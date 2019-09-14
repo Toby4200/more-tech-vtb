@@ -7,8 +7,7 @@ import Home from './Home';
 import Footer from './Footer.js';
 import VotingList from './VotingList';
 import CreateVoting from './CreateVoting';
-import VotingPage from './VotingPage.js';
-import VotingNumberPage from './VotingNumberPage.js';
+import VotingPage from '../pages/VotingPage.js';
 
 @inject('store', 'routing')
 @observer
@@ -30,31 +29,29 @@ export default class App extends Component {
 			<div className='wrapper'>
         <Route
           exact
-          path='/voting-page'
-          component={VotingPage}
+          path='/'
+          component={Home}
         />
 
         <Route
           exact
-          path='/voting-number-page'
-          component={VotingNumberPage}
+          path='/voting-list'
+          component={VotingList}
         />
 
         <Route
-					exact
-					path='/'
-					component={Home}
-				/>
+          path='/create-voting'
+          component={CreateVoting}
+        />
 
-				<Route
-					path='/create-voting'
-					component={CreateVoting}
-				/>
-				<Route
-					exact
-					path='/voting-list'
-          component={VotingList}
-				/>
+
+
+        <Route
+          exact
+          path='/voting'
+          component={VotingPage}
+        />
+
 
         <Route
           exact
