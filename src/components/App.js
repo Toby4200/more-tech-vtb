@@ -7,7 +7,6 @@ import Home from './Home';
 import Footer from './Footer.js';
 import VotingList from './VotingList';
 import CreateVoting from './CreateVoting';
-import VotingPage from './VotingPage.js';
 import VotingNumberPage from './VotingNumberPage.js';
 
 @inject('store', 'routing')
@@ -28,11 +27,6 @@ export default class App extends Component {
 	render() {
 		return (
 			<div className='wrapper'>
-        <Route
-          exact
-          path='/voting-page'
-          component={VotingPage}
-        />
 
         <Route
           exact
