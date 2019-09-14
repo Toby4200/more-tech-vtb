@@ -27,3 +27,63 @@
   display: flex;
   flex-direction: column;
 }
+
+.link {
+
+  &__item {
+    margin-left: 20px;
+  }
+}
+
+.voting-header {
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: 30px;
+}
+
+.status {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__title {
+    font-size: 22px;
+    font-weight: bold;
+    margin-right: 5px;
+  }
+
+  &__description {
+    font-size: 18px;
+    font-style: italic;
+    margin-right: 5px;
+  }
+
+  &__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.timer {
+
+  &__item {
+    font-style: italic;
+  }
+
+  &__icon {
+    display: flex;
+    justify-content: flex-end;
+
+  }
+
+  &__word {
+    font-size: 12px;
+  }
+
+  //
+  //&__ {
+  //
+  //}
+}
