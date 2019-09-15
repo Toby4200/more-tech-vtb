@@ -10,19 +10,13 @@ import VotingList from './VotingList';
 import CreateVoting from './CreateVoting';
 import VotingPage from '../pages/VotingPage.js';
 
-@inject('store', 'routing')
+@inject('store')
 @observer
 export default class App extends Component {
 	constructor(props) {
 		super(props);
 
 		this.store = this.props.store;
-	}
-
-	authenticate(e) {
-		if (e) e.preventDefault();
-
-		this.store.appState.authenticate();
 	}
 
 	render() {
