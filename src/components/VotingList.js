@@ -10,9 +10,7 @@ import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
 
-const user = {
-    role: 'admin'
-}
+let userRole = 'admin';
 
 export default class VotingList extends Component {
     constructor(props) {
@@ -24,13 +22,12 @@ export default class VotingList extends Component {
         };
 
       }
-      componentDidMount(){
-            axios.get('http://localhost:8090/votings').then(res => {
-                console.log(res);
-                const votingList = res.body;
+      /*componentDidMount(){
+            axios.get('http://localhost:8090/voting/1').then(res => {
+                const votingList = res.points;
                  this.setState({votingList});
                 });
-        }
+        }*/
            renderVotingMeetingsActive = itemList => {
           return itemList
             .sort(i => i.closed ? 1 : -1)
@@ -45,6 +42,12 @@ export default class VotingList extends Component {
                         dateOfEnd={i.dateOfEnd}/>)
         };
 
+        renderNewVoteButton(role){
+            if (role === 'admin'){
+                return(<Button className='new-vote' variant='contained' color='primary'>Создать новое голосование</Button>)
+            }
+        }
+
     render() {
         const store = this.store;
         const {title} = this.state;
@@ -55,6 +58,7 @@ export default class VotingList extends Component {
             </div>
             <div className='meetings-item_container'>
                 {this.renderVotingMeetingsActive(VOITING_IST_FULL)}
+                {this.renderNewVoteButton(userRole)}
             </div>
           </Container>
         );
