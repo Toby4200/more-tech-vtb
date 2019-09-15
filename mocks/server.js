@@ -209,11 +209,17 @@ const init = async () => {
       switch (request.payload.email) {
         case "toba@klevertech.fun" :
           return {
-            role: "admin",
+            id: 1,
+            name: 'Бабин Анатолий',
+            email: 'toba@klevertech.fun',
+            role: 'admin'
           };
         case "myanshin@klevertech.fun" :
           return {
-            role: "user",
+            id: 5,
+            name: 'Яньшин Михаил',
+            email: 'myanshin@klevertech.fun',
+            role: 'user'
           };
       }
 

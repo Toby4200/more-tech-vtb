@@ -1,5 +1,5 @@
 import 'date-fns';
-import { endOfDay } from 'date-fns'
+import { endOfDay, format } from 'date-fns'
 import React, { Component } from 'react';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
@@ -37,6 +37,8 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { observer } from 'mobx-react';
 import usersState from '../stores/users';
+import votingState from '../stores/votings';
+import userState from '../stores/user';
 
 export class Point {
   title = '';
@@ -62,7 +64,7 @@ export default class CreateVoting extends Component {
       points: [],
       type: votingTypes.withTimeBounds,
       closedTime: endOfDay(new Date()),
-      selectedUsers: [],
+      participants: [],
       usersSelectionAnchorEl: null,
       findUsersText: '',
       creatorLinkModal: {
@@ -78,9 +80,9 @@ export default class CreateVoting extends Component {
   }
 
   getUsersSelectionList = () => {
-    const { selectedUsers } = this.state;
+    const { participants } = this.state;
     return usersState.users
-      .filter(user => !selectedUsers.find(({ id }) => id === user.id));
+      .filter(user => !participants.find(({ id }) => id === user.id));
   };
 
   renderCreatorLinkModal = () => {
@@ -398,10 +400,10 @@ export default class CreateVoting extends Component {
   };
 
   renderUser = (user, index) => {
-    const { selectedUsers } = this.state;
+    const { participants } = this.state;
     const handleRemove = () => {
-      selectedUsers.splice(index, 1);
-      this.setState({ selectedUsers });
+      participants.splice(index, 1);
+      this.setState({ participants });
     };
 
     return (
@@ -425,7 +427,7 @@ export default class CreateVoting extends Component {
   };
 
   renderUsers = () => {
-    const { selectedUsers } = this.state;
+    const { participants } = this.state;
     const usersSelectionList = this.getUsersSelectionList();
     const openUsersSelectionPopup = ({ currentTarget }) => {
       this.setState({ usersSelectionAnchorEl: currentTarget });
@@ -455,9 +457,9 @@ export default class CreateVoting extends Component {
                 { this.renderUsersSelectionPopup(usersSelectionList) }
               </Grid>
             </Typography>
-            {!!selectedUsers.length &&
+            {!!participants.length &&
               <List dense>
-                {selectedUsers.map((user, i) => this.renderUser(user, i))}
+                {participants.map((user, i) => this.renderUser(user, i))}
               </List>
             }
           </CardContent>
@@ -467,7 +469,7 @@ export default class CreateVoting extends Component {
   };
 
   renderUsersSelectionPopup = (usersSelectionList) => {
-    const { usersSelectionAnchorEl, selectedUsers, findUsersText } = this.state;
+    const { usersSelectionAnchorEl, participants, findUsersText } = this.state;
     const filteredUsers = usersSelectionList.filter(({ name }) => name.indexOf(findUsersText) !== -1);
 
     const handleClose = () => {
@@ -477,10 +479,10 @@ export default class CreateVoting extends Component {
       this.setState({ findUsersText: value });
     };
     const handleItemClick = (user) => () => {
-      if (selectedUsers.find(({ id }) => id === user.id)) {
+      if (participants.find(({ id }) => id === user.id)) {
         return;
       }
-      this.setState({ selectedUsers: [ ...selectedUsers, user ] }, () => {
+      this.setState({ participants: [ ...participants, user ] }, () => {
         if (!(usersSelectionList.length - 1)) {
           this.setState({ usersSelectionAnchorEl: null });
         }
@@ -525,19 +527,48 @@ export default class CreateVoting extends Component {
     );
   };
 
+  createVoting = () => {
+    const {
+      title,
+      description,
+      points,
+      type,
+      participants
+    } = this.state;
+    const { id, name, email, role } = userState;
+    let { closedTime, createdTime } = this.state;
+
+    closedTime = format(closedTime, 'MM/dd/yyyy HH:mm');
+    createdTime = format(new Date(), 'MM/dd/yyyy HH:mm');
+
+    return votingState.addVotingRequest({
+      title,
+      description,
+      points,
+      type,
+      participants,
+      closedTime,
+      createdTime,
+      created: { id, name, email, role }
+    });
+  };
+
   renderCreateButton = () => {
     const {
       title,
       description,
       points,
       type,
-      selectedUsers
+      participants
     } = this.state;
+    const { history } = this.props;
     const disabled = !(
-      title && description && points.length && type && selectedUsers.length
+      title && description && points.length && type && participants.length
     );
     const handleCreate = () => {
-      // Тут запрос делаем и редиректим на ID полученной странички голосования
+      this.createVoting().then(({ id }) => {
+        history.push(`/voting/${id}`);
+      });
     };
 
     return (
