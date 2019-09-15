@@ -200,11 +200,12 @@ const renderer = ({ hours, minutes, seconds, completed }) => {
     return <div className="timer_done">Встреча окончена</div>;
   } else {
     return (<div className="timer">
-      <div className="timer__icon">
-        <HourglassEmptyIcon/>
-      </div>
+      {/*<div className="timer__icon">*/}
+      {/*  <HourglassEmptyIcon/>*/}
+      {/*</div>*/}
 
       <div className="timer__countdown-container">
+        <span className="timer__rest">Осталось </span>
         {
           hours ? <span className="timer__item timer__hours">{hours} <span className="timer__word">ч</span> : </span> : ''
         }
@@ -255,10 +256,11 @@ export default class VotingPage extends Component {
       } = point;
 
       return (
-        <div>
-          <ListItem>
+        <div className="points__container">
+          <ListItem className="points__item">
             <ListItemText
               primary={ title }
+              className="points__item-text"
             />
           </ListItem>
 
@@ -294,6 +296,8 @@ export default class VotingPage extends Component {
             clickable
             href={ url }
             component="a"
+            color="primary"
+            variant="outlined"
           >
           </Chip>
         </ListItem>
@@ -322,7 +326,6 @@ export default class VotingPage extends Component {
         name = '',
         id = 0
       } = kent;
-      console.log('kent', kent)
 
       return (
         <ListItem>
