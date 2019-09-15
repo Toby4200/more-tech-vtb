@@ -96,8 +96,8 @@ export default class VotingPage extends Component {
             />
 
             <div className="points__votes-container vote">
-              <ThumbDownAltIcon/>
-              <ThumbUpAltIcon/>
+              <ThumbUpAltIcon className="points__thumb-up points__thumb" />
+              <ThumbDownAltIcon className="points__thumb-down points__thumb" />
             </div>
           </ListItem>
 

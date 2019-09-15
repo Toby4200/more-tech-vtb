@@ -63,13 +63,30 @@
   &__item-text {
     //font-size: 18px;
   }
+
+  &__thumb {
+    cursor: pointer;
+  }
+
+  &__thumb-up {
+    margin-right: 15px;
+
+  }
+
+  &__thumb-down {
+
+  }
 }
 
 .link {
+  display: flex;
+  justify-content: flex-start;
+  flex: 0 1 auto;
+  margin-left: -15px;
 
   &__item {
-    margin-left: -15px;
     margin-bottom: -6px;
+    width: auto;
   }
 }
 
