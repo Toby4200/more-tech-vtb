@@ -5,6 +5,7 @@ import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
+import VotingChat from '../components/VotingChat';
 
 export default class Login extends Component {
 

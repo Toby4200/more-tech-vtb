@@ -27,6 +27,7 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
+import VotingChat from '../components/VotingChat';
 
 const VOITING_LIST_FULL = [
   {
@@ -395,12 +396,9 @@ export default class VotingPage extends Component {
               </CardContent>
             </Card>
 
-            <div className="chat">
-
-            </div>
+            <VotingChat />
 
           </div>
-
         </div>
       </Container>
     );
