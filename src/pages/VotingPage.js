@@ -158,11 +158,16 @@ export default class VotingPage extends Component {
 
       return (
         <ListItem>
-          <ListItemAvatar>
-            <Avatar>
-              <ImageIcon />
-            </Avatar>
-          </ListItemAvatar>
+          {/*<ListItemAvatar>*/}
+          {/*  <Avatar>*/}
+          {/*    <ImageIcon />*/}
+          {/*  </Avatar>*/}
+          {/*</ListItemAvatar>*/}
+          {/*div.*/}
+          <div className="people__avatar">
+            {/*<img src="./../images/team/kot.png" alt=""/>*/}
+          </div>
+
           <ListItemText primary={name} secondary={email} />
 
           {
@@ -232,7 +237,7 @@ export default class VotingPage extends Component {
           </div>
 
           <div className="voting__right-container">
-            <Card className={"classes"}>
+            <Card className="people__wrapper">
               <CardContent>
                 <div className="people">
                   <span className="people__title">Участники</span>
