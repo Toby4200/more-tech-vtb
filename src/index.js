@@ -13,7 +13,6 @@ import VotingList from './components/VotingList';
 import CreateVoting from './components/CreateVoting';
 import VotingPage from './pages/VotingPage.js';
 
-
 const createBrowserHistory = require('history').createBrowserHistory;
 
 const store = rehydrate();

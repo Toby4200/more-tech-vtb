@@ -1,18 +1,10 @@
-
 import React, { Component } from 'react';
-import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography'
 import VotingMeetings from './ui/VotingMeetings'
 import {VOITING_IST_FULL} from '../../src/pages/VotingPage'
 import {Link, push} from 'react-router-dom';
-import TextField from '@material-ui/core/TextField';
-import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import Button from '@material-ui/core/Button';
-import axios from 'axios';
-import { createBrowserHistory } from 'history';
-
-const history = createBrowserHistory()
 
 let userRole = 'admin';
 
@@ -24,7 +16,6 @@ export default class VotingList extends Component {
           title: 'Список голосований',
           votingList:[]
         };
-
       }
       /*componentDidMount(){
             axios.get('http://localhost:8090/voting/1').then(res => {
@@ -46,14 +37,21 @@ export default class VotingList extends Component {
                         dateOfEnd={i.dateOfEnd}/>)
         };
 
-        renderNewVoteButton(role){
+        renderNewVoteButton = (role) => {
+            const { history } = this.props;
             if (role === 'admin'){
                 return(
-                <Link to={'/create-voting'} onClick={history.push(`/create-voting`)}>
-                    <Button className='new-vote' variant='contained' color='primary'>Создать новое голосование</Button>
-                </Link>)
-                };
+                    <Button
+                      onClick={() => history.push(`/create-voting`)}
+                      className='new-vote'
+                      variant='contained'
+                      color='primary'
+                    >
+                      Создать новое голосование
+                    </Button>
+                )
             }
+        };
         
 
     render() {
