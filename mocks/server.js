@@ -2,8 +2,6 @@
 
 const Hapi = require('@hapi/hapi');
 
-const MONTH_IN_SEC = 2592000;
-
 const init = async () => {
   const server = Hapi.server({
     port: 8090,
@@ -1458,6 +1456,21 @@ const init = async () => {
           status: 'В работе'
         }
       ]
+    }
+  });
+
+  // Моки для создание и сохранение страницы
+  server.route({
+    method: 'POST',
+    path: '/voting',
+    handler: function (request, h) {
+
+      const response = {
+        ...request.payload,
+        id: 10 + Math.floor(Math.random() * 100)
+      };
+
+      return response;
     }
   });
 
