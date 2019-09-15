@@ -11,19 +11,11 @@ export default class Login extends Component {
   handleClick = (e) => {
     e.preventDefault();
 
-    // console.log(this.state.login);
-    // console.log(this.state.role)
-    // console.log(this.state.password);
-
-    axios.post('https://next.json-generator.com/api/json/get/N17f3gUUP', {
-      login: this.state.firstName,
-      password: this.state.password,
-      role: this.state.role
-    })
-      .then((res) => {
-        console.log('res', res.data);
+    axios.post('/auth', {email})
+      .then((data) => {
+        console.log('email', data);
       })
-  }
+    }
 
   handleChange = (inputName, event) => {
   console.log('inputName', inputName);
@@ -47,7 +39,7 @@ export default class Login extends Component {
                     id="outlined-email-input"
                     label="e-mail"
                     className="form__input"
-                    onChange={ this.handleChange.bind(this, 'login') }
+                    onChange={ this.handleChange.bind(this, 'email') }
                   />
                   <TextField
                     margin="normal"
