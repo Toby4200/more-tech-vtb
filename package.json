@@ -11,6 +11,7 @@
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.js --mode development",
     "build": "cross-env NODE_ENV=production rimraf ./dist && webpack --config webpack.config.production.js --mode production",
+    "mock": "nodemon ./mocks/server.js",
     "postinstall": "webpack --config ./webpack.config.production.js --mode production --display-error-details",
     "preview": "cross-env NODE_ENV=preview http-server ./dist -p 1234 -c-1",
     "test": "cross-env NODE_ENV=test echo \"Error: no test specified\" && exit 1"
@@ -70,6 +71,7 @@
     "webpack-dev-server": "^3.1.8"
   },
   "dependencies": {
+    "@hapi/hapi": "^18.3.2",
     "@material-ui/core": "^4.4.2",
     "@material-ui/icons": "^4.4.1",
     "axios": "^0.18.0",
@@ -81,6 +83,7 @@
     "mobx-react-devtools": "^6.0.3",
     "mobx-react-router": "^4.0.5",
     "prop-types": "^15.7.2",
+    "nodemon": "^1.19.2",
     "react": "^16.5.2",
     "react-countdown-now": "^2.1.1",
     "react-dom": "^16.5.2",
