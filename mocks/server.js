@@ -169,7 +169,7 @@ const init = async () => {
     method: 'POST',
     path: '/auth',
     handler: function (request, h) {
-      switch (request.payload.username) {
+      switch (request.payload.email) {
         case "toba@klevertech.fun" :
           return {
             role: "admin",
