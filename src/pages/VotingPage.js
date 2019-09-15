@@ -161,7 +161,8 @@ export default class VotingPage extends Component {
       const {
         email = '',
         name = '',
-        id = 0
+        id = 0,
+        imgSrc = '',
       } = kent;
 
       return (
@@ -173,7 +174,7 @@ export default class VotingPage extends Component {
           {/*</ListItemAvatar>*/}
           {/*div.*/}
           <div className="people__avatar">
-            {/*<img src="./../images/team/kot.png" alt=""/>*/}
+            <img src={imgSrc} alt="" className="people__img"/>
           </div>
 
           <ListItemText primary={name} secondary={email} />
