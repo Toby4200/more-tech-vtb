@@ -1,33 +1,53 @@
 import('./styles/main.scss');
 import React from 'react';
 import { render } from 'react-dom';
-import { Router } from 'react-router-dom';
+import { Route, Router, Redirect } from 'react-router-dom';
 import { Provider } from 'mobx-react';
 import { AppContainer } from 'react-hot-loader';
 import { rehydrate, hotRehydrate } from 'rfx-core';
 
 import { isProduction } from './utils/constants';
 import App from './components/App';
-import stores from './stores/stores';
-
-import { RouterStore, syncHistoryWithStore } from 'mobx-react-router';
+import Login from './components/Login';
+import VotingList from './components/VotingList';
+import CreateVoting from './components/CreateVoting';
+import VotingPage from './pages/VotingPage.js';
 
 const createBrowserHistory = require('history').createBrowserHistory;
 
 const store = rehydrate();
 
-const renderApp = Component => {
-  const browserHistory = createBrowserHistory();
-  const routeStore = new RouterStore();
-  const history = syncHistoryWithStore(browserHistory, routeStore);
+const renderApp = () => {
+  const history = createBrowserHistory();
 
 	render(
 		<AppContainer>
-			<Router history={history}>
-				<Provider store={isProduction ? store : hotRehydrate()} routing={routeStore} >
-					<App />
-				</Provider>
-			</Router>
+			<Provider store={isProduction ? store : hotRehydrate()} >
+				<Router history={history}>
+					<div className='wrapper'>
+
+						<Route
+							path='/voting-list'
+							component={VotingList}
+						/>
+
+						<Route
+							path='/create-voting'
+							component={CreateVoting}
+						/>
+
+						<Route
+							path='/voting/:id'
+							component={VotingPage}
+						/>
+
+						<Route
+							path='/login'
+							component={Login}
+						/>
+					</div>
+				</Router>
+			</Provider>
 		</AppContainer>,
 		document.getElementById('root')
 	);

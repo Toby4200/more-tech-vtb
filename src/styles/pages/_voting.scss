@@ -16,9 +16,9 @@
   &__right-container {
     padding: 0 20px;
     flex-basis: 400px;
-    min-width: 300px;
+    min-width: 350px;
 
-    background: #0000000a;
+    //background: #0000000a;
   }
 
 
@@ -47,15 +47,29 @@
   display: flex;
   flex-direction: column;
 
+  &__container {
+    margin-bottom: 10px;
+  }
+
   &__title {
     font-size: 25px;
+  }
+
+  &__item {
+    padding-left: 0;
+    margin-bottom: -3px;
+  }
+
+  &__item-text {
+    //font-size: 18px;
   }
 }
 
 .link {
 
   &__item {
-    margin-left: 20px;
+    margin-left: -15px;
+    margin-bottom: -6px;
   }
 }
 
@@ -81,6 +95,7 @@
     font-size: 18px;
     font-style: italic;
     margin-right: 5px;
+    color: green;
   }
 
   &__icon {

@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
-import Box from '@material-ui/core/Box';
 import TextField from '@material-ui/core/TextField';
-import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
+import { observer } from 'mobx-react';
+import userStore from '../stores/user';
+import { withRouter, Link } from "react-router-dom";
 import VotingChat from '../components/VotingChat';
 
-export default class Login extends Component {
+@observer
+class Login extends Component {
 
   handleClick = (e) => {
     e.preventDefault();
@@ -27,9 +29,18 @@ export default class Login extends Component {
   }
 
   handleChange = (inputName, event) => {
-  console.log('inputName', inputName);
-  this.setState({ [inputName]:event.target.value});
-  }
+    this.setState({ [inputName]:event.target.value});
+  };
+
+  auth = () => {
+    const { login } = this.state;
+    const { history } = this.props;
+
+    userStore.getUser(login)
+      .then(() => {
+        history.push('/voting-list');
+      });
+  };
 
   render() {
     return (
@@ -38,7 +49,7 @@ export default class Login extends Component {
         <div className="login-page__top">
           <span className="login-page__subtitle">Войдите в свой аккаунт</span>
         </div>
-          <form className="form" onSubmit={ this.handleClick }>
+          <form className="form">
             <div className="card-body">
               <div className="form__wrapper">
                 <div className="form__container">
@@ -58,7 +69,7 @@ export default class Login extends Component {
                     className="form__input"
                     onChange={ this.handleChange.bind(this, 'password') }
                   />
-                  <Button className="form__button" type="submit" variant="contained" color="default">
+                  <Button onClick={this.auth} className="form__button" variant="contained" color="default">
                     Войти
                   </Button>
                 </div>
@@ -69,6 +80,8 @@ export default class Login extends Component {
     )
   }
 }
+
+export default withRouter(Login)
 
 
 

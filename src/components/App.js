@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, BrowserRouter as Router } from 'react-router-dom';
 import { inject, observer } from 'mobx-react';
+
 
 import Login from './Login';
 import Home from './Home';
@@ -9,7 +10,7 @@ import VotingList from './VotingList';
 import CreateVoting from './CreateVoting';
 import VotingPage from '../pages/VotingPage.js';
 
-@inject('store', 'routing')
+@inject('store')
 @observer
 export default class App extends Component {
 	constructor(props) {
@@ -18,45 +19,41 @@ export default class App extends Component {
 		this.store = this.props.store;
 	}
 
-	authenticate(e) {
-		if (e) e.preventDefault();
-
-		this.store.appState.authenticate();
-	}
-
 	render() {
 		return (
 			<div className='wrapper'>
-        <Route
-          exact
-          path='/'
-          component={Home}
-        />
+			<Router>
+				<div>
+				<Route
+				exact
+				path='/'
+				component={Home}
+				/>
 
-        <Route
-          exact
-          path='/voting-list'
-          component={VotingList}
-        />
+				<Route
+				exact
+				path='/voting-list'
+				component={VotingList}
+				/>
+				<Route
+				path='/create-voting'
+				component={CreateVoting}
+				/>
 
-        <Route
-          path='/create-voting'
-          component={CreateVoting}
-        />
+				<Route
+				exact
+				path='/voting/:id'
+				component={VotingPage}
+				/>
 
-        <Route
-          exact
-          path='/voting/:id'
-          component={VotingPage}
-        />
-
-        <Route
-          exact
-          path='/login'
-          component={Login}
-        />
-
-        <Footer />
+				<Route
+				exact
+				path='/login'
+				component={Login}
+				/>
+				</div>
+			</Router>
+				<Footer />
 			</div>
 		);
 	}

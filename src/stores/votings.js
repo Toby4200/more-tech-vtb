@@ -1,7 +1,7 @@
 import { observable, action } from 'mobx';
 import axios from 'axios';
 
-export default class VotingsState {
+class VotingsState {
   @observable votingList;
 
   constructor() {
@@ -9,7 +9,7 @@ export default class VotingsState {
   }
 
   async getVotings() {
-    const data = await axios.get('http://localhost:8090/votings');
+    const { data } = await axios.get('http://localhost:8090/votings');
     this.setVotingsState(data);
   }
 
@@ -17,3 +17,5 @@ export default class VotingsState {
     this.votingList = data;
   }
 }
+
+export default new VotingsState();
