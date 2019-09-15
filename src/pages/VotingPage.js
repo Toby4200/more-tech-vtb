@@ -28,7 +28,9 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 
-const VOITING_LIST_FULL = [
+
+export const VOITING_IST_FULL = [
+
   {
     title: 'Переезд в новый офис',
     description: 'Мы хотим переехать в новый офис. Наш текущий офис начинает заканчиваться ' +

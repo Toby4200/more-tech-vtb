@@ -1,0 +1,53 @@
+.meetings-item_container{
+    .new-vote{
+        margin:0 0 15px 15px;
+    }
+    .voting-list__meetings{
+            height: auto;
+            margin-bottom: 15px;
+            padding: 15px;
+
+            .item_list{
+                .meeting-item{
+                    &_second, &_third, &_fourth, &_fivth, &_sixth{
+                        display: inline-block;
+                        margin-right: 5px;
+                        font-weight: 500;
+                    }
+                }
+                h1{
+                    font-family: Roboto;
+                    font-size: 20px;
+                    line-height: 1;
+                    margin-bottom: 10px
+                }
+                tr{
+                    text-align: left;
+                }
+            }
+
+            .meeting-card_top{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+
+            }
+           .item-edit{
+               display: flex;
+               flex-direction: row;
+               align-items: flex-end;
+            }
+            .voting-entrance{
+                margin-top: 15px
+            }
+            .voting-meeting_change-button{
+                min-height: 30px;
+                max-height: 30px;
+                width: 30px;
+                .change-button_icon{
+                    height: 20px;
+                    width: 20px;
+                }
+            }
+    }
+}

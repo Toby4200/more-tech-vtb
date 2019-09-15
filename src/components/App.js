@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, BrowserRouter as Router } from 'react-router-dom';
 import { inject, observer } from 'mobx-react';
+
 
 import Login from './Login';
 import Home from './Home';
@@ -21,33 +22,38 @@ export default class App extends Component {
 	render() {
 		return (
 			<div className='wrapper'>
-        <Route
-          exact
-          path='/'
-          component={Home}
-        />
+			<Router>
+				<div>
+				<Route
+				exact
+				path='/'
+				component={Home}
+				/>
 
-        <Route
-          path='/voting-list'
-          component={VotingList}
-        />
+				<Route
+				exact
+				path='/voting-list'
+				component={VotingList}
+				/>
+				<Route
+				path='/create-voting'
+				component={CreateVoting}
+				/>
 
-        <Route
-          path='/create-voting'
-          component={CreateVoting}
-        />
+				<Route
+				exact
+				path='/voting/:id'
+				component={VotingPage}
+				/>
 
-        <Route
-          path='/voting/:id'
-          component={VotingPage}
-        />
-
-        <Route
-          path='/login'
-          component={Login}
-        />
-
-        <Footer />
+				<Route
+				exact
+				path='/login'
+				component={Login}
+				/>
+				</div>
+			</Router>
+				<Footer />
 			</div>
 		);
 	}
