@@ -49,8 +49,8 @@ export default class VotingChat extends Component {
             id="standard-dense"
             label="Ваше сообщение"
             margin="dense"
-            rows="3"
-            rowsMax="3"
+            rows="2"
+            rowsMax="2"
             multiline={true}
             className="input"
           />
