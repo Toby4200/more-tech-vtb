@@ -64,14 +64,10 @@ export default class VotingList extends Component {
                 </div>
                 <div className='meeting-card_top'>
                 <a className='voting-entrance'>
-                            {/* <Link to={`/voting/1`}>
+                        <Button variant='contained'>
+                        <Link to={`/voting/1`} onClick={ this.handleBtnClick }>
                                 Подробнее
-                            </Link> */}
-                        <Button
-                            variant="contained"
-                            onClick={ this.handleBtnClick }
-                        > 
-                            Подробнее
+                            </Link>
                         </Button>
                     </a>
                     <div className='item-edit'>

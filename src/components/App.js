@@ -30,24 +30,25 @@ export default class App extends Component {
 			<div className='wrapper'>
 			<Router>
 				<div>
-				<Route
+				{/*<Route
 				exact
 				path='/'
 				component={Home}
-				/>
+				/>*/}
 
 				<Route
 				exact
 				path='/voting-list'
 				component={VotingList}
 				/>
-
+t re
 				<Route
 				path='/create-voting'
 				component={CreateVoting}
 				/>
 
 				<Route
+				exact
 				path='/voting/:id'
 				component={VotingPage}
 				/>
