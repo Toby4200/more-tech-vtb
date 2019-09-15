@@ -31,12 +31,12 @@ const init = async () => {
             title: 'Заказать кофе машину',
             links: [
               {
-                title: 'монитор.pdf',
+                title: 'Кофе-машина.pdf',
                 url: 'https://material-ui.com/api/divider/'
               },
 
               {
-                title: 'стул.pdf',
+                title: 'Кофе.pdf',
                 url: 'https://material-ui.com/api/divider/'
               },
             ]
@@ -45,7 +45,7 @@ const init = async () => {
             title: 'Купить мониторы',
             links: [
               {
-                title: 'кофе-машина.pdf',
+                title: 'Мониторы.pdf',
                 url: 'https://material-ui.com/api/divider/'
               },
             ]
@@ -54,7 +54,7 @@ const init = async () => {
             title: 'Заказать стулья',
             links: [
               {
-                title: 'кофе-машина.pdf',
+                title: 'Стулья.pdf',
                 url: 'https://material-ui.com/api/divider/'
               },
             ]
@@ -63,12 +63,12 @@ const init = async () => {
             title: 'Заказать массажистку',
             links: [
               {
-                title: 'монитор.pdf',
+                title: 'Услуги массажиста.pdf',
                 url: 'https://material-ui.com/api/divider/'
               },
 
               {
-                title: 'стул.pdf',
+                title: 'Установка массажного стола.pdf',
                 url: 'https://material-ui.com/api/divider/'
               },
             ]
@@ -123,7 +123,7 @@ const init = async () => {
         // withTimeBounds
         // withoutTimeBounds
         type : 'Бессрочная',
-        closed: false,
+        closed: true,
         id: '1',
         // dateOfBegin: '21 - 09 - 2019 13:48',
         createdTime: '01/09/2019 04:42',
