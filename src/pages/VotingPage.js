@@ -231,7 +231,9 @@ export default class VotingPage extends Component {
 
   render() {
     const {
-      voting = {}
+      voting = {
+        closed: false
+      }
     } = this.state;
 
     const title = lodash.get(voting, ['title'], '');
@@ -249,7 +251,7 @@ export default class VotingPage extends Component {
 
           <div className="voting__left-container">
             {/* А это выключается когда встреча завершается */}
-            {this.state.voting.closed ? this.renderVoteResult(creator, closedTime, createdTime) : this.renderVotePage(title, points, description)}
+            { closed ? this.renderVoteResult(creator, closedTime, createdTime) : this.renderVotePage(title, points, description)}
           </div>
 
           <div className="voting__right-container">
