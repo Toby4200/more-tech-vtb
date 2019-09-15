@@ -549,7 +549,7 @@ export default class CreateVoting extends Component {
       participants,
       closedTime,
       createdTime,
-      created: { id, name, email, role }
+      created: { id, name, email, role}
     });
   };
 

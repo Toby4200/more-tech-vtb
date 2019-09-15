@@ -21,7 +21,7 @@ class VotingState {
   }
 
   getVotingById(id) {
-    return this.votingList.find(({ id: votingId }) => votingId === id);
+    return this.votingList.find(({ id: votingId }) => +votingId === +id);
   }
 
   addVotingToList(data) {

@@ -127,7 +127,7 @@ const init = async () => {
         // withTimeBounds
         // withoutTimeBounds
         type : 'Бессрочная',
-        closed: false,
+        closed: true,
         id: '1',
         // dateOfBegin: '21 - 09 - 2019 13:48',
         createdTime: '01/09/2019 04:42',

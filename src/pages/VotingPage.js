@@ -16,6 +16,7 @@ import ImageIcon from '@material-ui/icons/Image';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import StarRateIcon from '@material-ui/icons/StarRate';
+import Aprooved from '../components/ui/Aprooved';
 
 import lodash from 'lodash';
 
@@ -26,6 +27,8 @@ import ThumbDownAltIcon from '@material-ui/icons/ThumbDownAlt';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import axios from 'axios';
+
+import votingState from '../stores/votings';
 
 const renderer = ({ hours, minutes, seconds, completed }) => {
   if (completed) {
@@ -63,21 +66,11 @@ export default class VotingPage extends Component {
   }
 
   componentDidMount() {
-    const { id } = this.props.match.params
-    console.log('id', id)
+    const { id } = this.props.match.params;
 
-    axios.get('http://localhost:8090/voting/1')
-      .then((res) => {
-        const {
-          data = {}
-        } = res;
-
-        this.setState({
-          voting: data
-        }, () => {
-          console.log('this.state', this.state)
-        })
-      });
+    this.setState({
+      voting: votingState.getVotingById(id)
+    });
   }
 
   renderPoints = (points) => {
@@ -150,6 +143,7 @@ export default class VotingPage extends Component {
       <Countdown
         date={Date.now() + 50000}
         renderer={renderer}
+
       />
     )
   }
@@ -193,6 +187,48 @@ export default class VotingPage extends Component {
     return kents;
   }
 
+  renderVotePage(title, points, description){return (
+    <React.Fragment>
+      <div className="voting__header voting-header">
+
+      <div className="status">
+        <span className="status__title">Статус | </span>
+        <span className="status__description">in progress</span>
+      </div>
+
+      {
+        this.renderTimer()
+      }
+      </div>
+
+      <div className="divider"></div>
+
+      {/* Тут будет плашка */}
+
+      <Typography variant="h1" gutterBottom className="voting__title">{title}</Typography>
+
+      <Typography variant="h4" gutterBottom className="voting__description">Описание</Typography>
+      <div variant="h4"className="voting__description-text">{description}</div>
+
+      <List
+          component="nav"
+          aria-labelledby="nested-list-subheader"
+          className="points"
+      >
+      <span className="points__title">Список пунктов для согласования</span>
+      {
+      this.renderPoints(points)
+      }
+      </List>
+    </React.Fragment>)
+  }
+
+  renderVoteResult(creator, closedTime, createdTime){return(
+    <Aprooved creator={creator} closedTime={closedTime} createdTime={createdTime}/>
+
+  )
+  }
+
   render() {
     const {
       voting = {}
@@ -204,6 +240,8 @@ export default class VotingPage extends Component {
 
     const participants = lodash.get(voting, ['participants'], []);
     const creator = lodash.get(voting, ['creator'], {});
+    const createdTime = lodash.get(voting, ['createdTime'], '');
+    const closedTime = lodash.get(voting, ['closedTime'],'')
 
     return (
       <Container maxWidth="lg" className="voting">
@@ -211,38 +249,7 @@ export default class VotingPage extends Component {
 
           <div className="voting__left-container">
             {/* А это выключается когда встреча завершается */}
-            <div className="voting__header voting-header">
-
-              <div className="status">
-                <span className="status__title">Статус | </span>
-                <span className="status__description">in progress</span>
-              </div>
-
-              {
-                this.renderTimer()
-              }
-            </div>
-
-            <div className="divider"></div>
-
-            {/* Тут будет плашка */}
-
-            <Typography variant="h1" gutterBottom className="voting__title">{title}</Typography>
-
-            <Typography variant="h4" gutterBottom className="voting__description">Описание</Typography>
-            <div variant="h4"className="voting__description-text">{description}</div>
-
-            <List
-              component="nav"
-              aria-labelledby="nested-list-subheader"
-              className="points"
-            >
-              <span className="points__title">Список пунктов для согласования</span>
-              {
-                this.renderPoints(points)
-              }
-            </List>
-
+            {this.state.voting.closed ? this.renderVoteResult(creator, closedTime, createdTime) : this.renderVotePage(title, points, description)}
           </div>
 
           <div className="voting__right-container">
