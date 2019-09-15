@@ -57,7 +57,7 @@
 
   &__item {
     padding-left: 0;
-    margin-bottom: -3px;
+    margin-bottom: -6px;
   }
 
   &__item-text {
@@ -82,11 +82,16 @@
   display: flex;
   justify-content: flex-start;
   flex: 0 1 auto;
-  margin-left: -15px;
+  margin-left: -10px;
 
   &__item {
     margin-bottom: -6px;
     width: auto;
+    padding: 10px;
+  }
+
+  &__a {
+    margin-right: 0;
   }
 }
 

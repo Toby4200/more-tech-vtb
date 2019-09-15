@@ -129,7 +129,7 @@ export default class VotingPage extends Component {
         <ListItem className="link__item" >
           <Chip
             label={ title }
-            className="class"
+            className="link__a"
             clickable
             href={ url }
             component="a"
