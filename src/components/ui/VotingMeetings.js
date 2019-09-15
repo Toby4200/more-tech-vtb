@@ -9,9 +9,9 @@ import {Link, push} from 'react-router-dom';
 
 export default class VotingList extends Component {
 
-    handleBtnClick = () => {
+    handleBtnClick = (id) => () => {
         const { history } = this.props;
-        history.push(`/voting/1`);
+        history.push(`/voting/${id}`);
     };
 
     render() {
@@ -22,7 +22,8 @@ export default class VotingList extends Component {
             creator,
             createdTime,
             closedTime,
-            status
+            status,
+            id
         } = this.props;
         const isDateOfEndRender = closed || type === 'Срочная';
         return (
@@ -47,7 +48,7 @@ export default class VotingList extends Component {
                 </div>
                 <div className='meeting-card_top'>
                 <a className='voting-entrance'>
-                        <Button onClick={ this.handleBtnClick } variant='contained'>
+                        <Button onClick={ this.handleBtnClick(id) } variant='contained'>
                             Подробнее
                         </Button>
                     </a>

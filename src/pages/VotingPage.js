@@ -28,6 +28,8 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import axios from 'axios';
 
+import votingState from '../stores/votings';
+
 const renderer = ({ hours, minutes, seconds, completed }) => {
   if (completed) {
     return <div className="timer_done">Встреча окончена</div>;
@@ -64,21 +66,11 @@ export default class VotingPage extends Component {
   }
 
   componentDidMount() {
-    const { id } = this.props.match.params
-    console.log('id', id)
+    const { id } = this.props.match.params;
 
-    axios.get('http://localhost:8090/voting/1')
-      .then((res) => {
-        const {
-          data = {}
-        } = res;
-
-        this.setState({
-          voting: data
-        }, () => {
-          console.log('this.state', this.state)
-        })
-      });
+    this.setState({
+      voting: votingState.getVotingById(id)
+    });
   }
 
   renderPoints = (points) => {
