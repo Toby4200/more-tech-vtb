@@ -7,7 +7,7 @@ import Delete from '@material-ui/icons/Delete';
 import Fab from '@material-ui/core/Fab';
 import {Link, push} from 'react-router-dom';
 
-export default class VotingList extends Component {
+export default class VotingMeetings extends Component {
 
     handleBtnClick = (id) => () => {
         const { history } = this.props;

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography'
-import VotingMeetings from './ui/VotingMeetings'
-import {VOITING_IST_FULL} from '../../src/pages/VotingPage'
+import VotingMeetings from './VotingMeetings'
+import {VOITING_IST_FULL} from './VotingPage'
 import {Link, push} from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import votingsStore from '../stores/votings';
