@@ -315,6 +315,9 @@ export default class CreateVoting extends Component {
                   variant="contained"
                   color="primary"
                   onClick={handleAddPoint}
+                  style={{
+                    width: '160px'
+                  }}
                 >
                   <AddIcon /> Добавить
                 </Button>
@@ -451,6 +454,9 @@ export default class CreateVoting extends Component {
                   disabled={!usersSelectionList.length}
                   color="primary"
                   onClick={openUsersSelectionPopup}
+                  style={{
+                    width: '160px'
+                  }}
                 >
                   <AddIcon /> Добавить
                 </Button>
