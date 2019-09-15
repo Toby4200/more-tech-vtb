@@ -5,10 +5,6 @@ import Container from "@material-ui/core/Container";
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-// import Collapse from '@material-ui/core/Collapse';
-// import InboxIcon from '@material-ui/icons/MoveToInbox';
-// import DraftsIcon from '@material-ui/icons/Drafts';
-// import SendIcon from '@material-ui/icons/Send';
 import HourglassEmptyIcon from '@material-ui/icons/HourglassEmpty';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar'
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
@@ -23,177 +19,14 @@ import StarRateIcon from '@material-ui/icons/StarRate';
 
 import lodash from 'lodash';
 
+import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
+import ThumbDownAltIcon from '@material-ui/icons/ThumbDownAlt';
+
 // card
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 
 import axios from 'axios';
-
-const VOITING_LIST_FULL = [
-  {
-    title: 'Переезд в новый офис',
-    description: 'Мы хотим переехать в новый офис. Наш текущий офис начинает заканчиваться ' +
-      'нам необходимо большее пространство. Так же хочется выглядеть более презентабильно в целом ' +
-      'перед нашими заказчиками. А так же повысить комфорт для своей команды. Так же хочется ' +
-      'чтобы можно было приглашать людей для знакомства в наш офис - в нем должно быть комфортно ',
-    points: [
-      {
-        title: 'Заказать кофе машину',
-        links: [
-          {
-            text: 'кофе-машина.pdf',
-            url: 'https://material-ui.com/api/divider/'
-          },
-          {
-            title: 'монитор.pdf',
-            url: 'https://material-ui.com/api/divider/'
-          },
-
-          {
-            title: 'стул.pdf',
-            url: 'https://material-ui.com/api/divider/'
-          },
-        ]
-      },
-      {
-        title: 'Купить мониторы',
-        links: [
-          {
-            title: 'кофе-машина.pdf',
-            url: 'https://material-ui.com/api/divider/'
-          },
-        ]
-      },
-      {
-        title: 'Заказать стулья',
-        links: [
-          {
-            title: 'кофе-машина.pdf',
-            url: 'https://material-ui.com/api/divider/'
-          },
-        ]
-      },
-      {
-        title: 'Заказать массажистку',
-        links: [
-          {
-            title: 'монитор.pdf',
-            url: 'https://material-ui.com/api/divider/'
-          },
-
-          {
-            title: 'стул.pdf',
-            url: 'https://material-ui.com/api/divider/'
-          },
-        ]
-      },
-    ],
-    admin : 'Владимир Раменский',
-    // был meetType
-    // withTimeBounds
-    // withoutTimeBounds
-    type : 'Бессрочная',
-    closed: false,
-    id: '1',
-    // dateOfBegin: '21 - 09 - 2019 13:48',
-    createdTime: '21 - 09 - 2019 13:48',
-    // dateOfEnd: '22 - 09 - 2019 13:40',
-    closedTime: '22 - 09 - 2019 13:40',
-    status: 'В работе'
-  },
-  {
-    meeting : 'Удалить сайт новостроек',
-    admin : 'Владимир Раменский',
-    meetType : 'Бессрочная',
-    closed: true,
-    id: '2',
-    dateOfBegin: '20 - 09 - 2019 12:39',
-    dateOfEnd: '20 - 09 - 2019 13:40',
-    status: 'Согласовано'
-  },
-  {
-    meeting : 'Обед',
-    admin : 'Владимир Раменский',
-    meetType : 'Срочная',
-    closed: false,
-    id: '3',
-    dateOfBegin:'19 - 09 - 2019 21:39',
-    dateOfEnd: '19 - 09 - 2019 22:00',
-    status: 'В работе'
-  },
-  {
-    meeting : 'Планирование развития',
-    admin : 'Дмитрий Корчагин',
-    meetType : 'Бессрочная',
-    closed: true,
-    id: '4',
-    dateOfBegin: '18 - 09 - 2019 20:39',
-    dateOfEnd: '18 - 09 - 2019 23:40',
-    status: 'Несогласовано'
-  }
-];
-
-// То, что придет с бэка как ответ на voiting/:id
-const VOITING_ITEM = {
-  title: 'Переезд в новый офис',
-  description: 'Мы хотим переехать в новый офис. Наш текущий офис начинает заканчиваться ' +
-    'нам необходимо большее пространство. Так же хочется выглядеть более презентабильно в целом ' +
-    'перед нашими заказчиками. А так же повысить комфорт для своей команды. Так же хочется ' +
-    'чтобы можно было приглашать людей для знакомства в наш офис - в нем должно быть комфортно ',
-  points: [
-    {
-      title: 'Заказать кофе машину',
-      links: [
-        {
-          title: 'кофе-машина.pdf',
-          url: 'https://material-ui.com/api/divider/'
-        },
-        {
-          title: 'монитор.pdf',
-          url: 'https://material-ui.com/api/divider/'
-        },
-
-        {
-          title: 'стул.pdf',
-          url: 'https://material-ui.com/api/divider/'
-        },
-      ]
-    },
-    {
-      title: 'Купить мониторы',
-      links: [
-        {
-          title: 'кофе-машина.pdf',
-          url: 'https://material-ui.com/api/divider/'
-        },
-      ]
-    },
-    {
-      title: 'Заказать стулья',
-      links: [
-        {
-          title: 'кофе-машина.pdf',
-          url: 'https://material-ui.com/api/divider/'
-        },
-      ]
-    },
-    {
-      title: 'Заказать массажистку',
-      links: [
-        {
-          title: 'монитор.pdf',
-          url: 'https://material-ui.com/api/divider/'
-        },
-
-        {
-          title: 'стул.pdf',
-          url: 'https://material-ui.com/api/divider/'
-        },
-      ]
-    },
-
-  ]
-};
 
 const renderer = ({ hours, minutes, seconds, completed }) => {
   if (completed) {
@@ -262,6 +95,11 @@ export default class VotingPage extends Component {
               primary={ title }
               className="points__item-text"
             />
+
+            <div className="points__votes-container vote">
+              <ThumbDownAltIcon/>
+              <ThumbUpAltIcon/>
+            </div>
           </ListItem>
 
           <List
@@ -361,10 +199,6 @@ export default class VotingPage extends Component {
 
     const participants = lodash.get(voting, ['participants'], []);
     const creator = lodash.get(voting, ['creator'], {});
-
-    // const title = lodash.get(voting, ['title']);
-    // const title = lodash.get(voting, ['title']);
-    // const title = lodash.get(voting, ['title']);
 
     return (
       <Container maxWidth="lg" className="voting">
