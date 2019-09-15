@@ -1,10 +1,19 @@
-.chat-card{
+.chat-card {
   width: 310px;
   height: 300px;
   background-color: white;
   margin-top: 10px;
   border-radius: 5px;
+
+  box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 2px 1px -1px rgba(0,0,0,0.12);
+  margin-top: 30px;
+
+  &__but {
+    position: relative;
+    bottom: -7px;
+  }
 }
+
 .MuiButton-contained{
   margin-top: 243px;
   width: 310px;
@@ -19,12 +28,12 @@
   width: 260px;
   height: 206px;
 }
-.first-mess{
+.first-mess {
   margin-top: 5px;
   background-color: white;
-  border-radius: 5px;
-  margin-left: 5px;
   width: 300px;
+  border-radius: 8px;
+  margin-left: 8px;
 }
 .second-message{
   margin-top: 0px;

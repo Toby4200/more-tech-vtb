@@ -54,7 +54,7 @@ export default class VotingChat extends Component {
             multiline={true}
             className="input"
           />
-          <div className="but">
+          <div className="but chat-card__but">
             <Button variant="contained" className="button">
               Отправить сообщение
             </Button>

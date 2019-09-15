@@ -14,10 +14,6 @@ class Login extends Component {
   handleClick = (e) => {
     e.preventDefault();
 
-    // console.log(this.state.login);
-    // console.log(this.state.role)
-    // console.log(this.state.password);
-
     axios.post('https://next.json-generator.com/api/json/get/N17f3gUUP', {
       login: this.state.firstName,
       password: this.state.password,
@@ -67,6 +63,7 @@ class Login extends Component {
                     id="outlined-name"
                     label="Пароль"
                     className="form__input"
+                    type="password"
                     onChange={ this.handleChange.bind(this, 'password') }
                   />
                   <Button onClick={this.auth} className="form__button" variant="contained" color="default">
