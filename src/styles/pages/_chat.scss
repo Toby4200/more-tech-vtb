@@ -1,13 +1,13 @@
 .chat-card{
-  width: 260px;
+  width: 310px;
   height: 300px;
-  background-color: #cecece;
+  background-color: #e8e8e8;
   margin-top: 10px;
   border-radius: 5px;
 }
 .MuiButton-contained{
   margin-top: 243px;
-  width: 260px;
+  width: 310px;
 }
 .centrate{
   display: flex;
@@ -20,18 +20,38 @@
   height: 206px;
 }
 .first-mess{
-  margin-top: 75px;
+  margin-top: 5px;
+  background-color: white;
+  border-radius: 5px;
+  margin-left: 5px;
+  width: 300px;
+}
+.second-message{
+  margin-top: 5px;
+  background-color: white;
+  border-radius: 5px;
+  margin-left: 5px;
+  width: 300px;
+  height: 68px;
 }
 .user-name{
-  transform: translate(47px, -38px);
-  font-size: 22px;
+  transform: translate(50px, -38px);
+  font-size: 18px;
 }
 .user-message{
   width: 246px;
   margin-top: -44px;
-  margin-left: 46px;
+  margin-left: 50px;
+  font-size: 14px;
 }
-.user-icon{
-  transform: translate(-4px, 15px);
+.user-icon1{
+  transform: translate(4px, 6px)
 }
-
+.user-icon2{
+  transform: translate(4px, 6px)
+}
+.line{
+  width: 310px;
+  height: 2px;
+  background-color: white;
+}
