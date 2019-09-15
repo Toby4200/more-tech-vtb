@@ -5,10 +5,14 @@ import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography'
 import VotingMeetings from './ui/VotingMeetings'
 import {VOITING_IST_FULL} from '../../src/pages/VotingPage'
+import {Link, push} from 'react-router-dom';
 import TextField from '@material-ui/core/TextField';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
+import { createBrowserHistory } from 'history';
+
+const history = createBrowserHistory()
 
 let userRole = 'admin';
 
@@ -44,9 +48,13 @@ export default class VotingList extends Component {
 
         renderNewVoteButton(role){
             if (role === 'admin'){
-                return(<Button className='new-vote' variant='contained' color='primary'>Создать новое голосование</Button>)
+                return(
+                <Link to={'/create-voting'} onClick={history.push(`/create-voting`)}>
+                    <Button className='new-vote' variant='contained' color='primary'>Создать новое голосование</Button>
+                </Link>)
+                };
             }
-        }
+        
 
     render() {
         const store = this.store;

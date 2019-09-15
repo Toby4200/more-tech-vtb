@@ -34,9 +34,9 @@ export default class VotingList extends Component {
         }
     }
 
-    handleBtnClick = (id = 1) => {
-        // history.push(`/voting/${ 1 }`);
-        history.push(`/login`);
+    handleBtnClick = (id) => {
+        history.push(`/voting/${ id }`);
+        //history.push(`/login`);
     }
 
     render() {
