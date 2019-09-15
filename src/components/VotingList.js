@@ -10,20 +10,39 @@ import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
 
-
+const user = {
+    role: 'admin'
+}
 
 export default class VotingList extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-          title: 'Список голосований'
+          title: 'Список голосований',
+          votingList:[]
         };
+
       }
+      componentDidMount(){
+            axios.get('http://localhost:8090/votings').then(res => {
+                console.log(res);
+                const votingList = res.body;
+                 this.setState({votingList});
+                });
+        }
            renderVotingMeetingsActive = itemList => {
           return itemList
             .sort(i => i.closed ? 1 : -1)
-            .map(i => <VotingMeetings status={i.status} closed={i.closed} meeting={i.meeting} admin={i.admin} meetType={i.meetType} id={i.id} dateOfBegin={i.dateOfBegin} dateOfEnd={i.dateOfEnd}/>)
+            .map(i => <VotingMeetings 
+                        status={i.status} 
+                        closed={i.closed} 
+                        meeting={i.meeting} 
+                        admin={i.admin} 
+                        meetType={i.meetType} 
+                        id={i.id} 
+                        dateOfBegin={i.dateOfBegin} 
+                        dateOfEnd={i.dateOfEnd}/>)
         };
 
     render() {

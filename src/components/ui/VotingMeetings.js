@@ -65,7 +65,7 @@ export default class VotingList extends Component {
                 <div className='meeting-card_top'>
                 <a className='voting-entrance'>
                         <Button variant='contained'>
-                        <Link to={`/voting/1`} onClick={ this.handleBtnClick }>
+                        <Link to={`/voting/${this.prop}`} onClick={ this.handleBtnClick }>
                                 Подробнее
                             </Link>
                         </Button>
