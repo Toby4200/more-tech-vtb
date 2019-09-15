@@ -35,6 +35,8 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import { observer } from 'mobx-react';
+import usersState from '../stores/users';
 
 export class Point {
   title = '';
@@ -46,59 +48,9 @@ export const votingTypes = {
   withoutTimeBounds: 'withoutTimeBounds'
 };
 
-export const users = [
-  {
-    name: 'Никита Петров',
-    email: 'webnikler@gmail.com',
-    role: 'admin',
-    id: 1
-  },
-  {
-    name: 'Бабин Анатолий',
-    email: 'toba434@gmail.com',
-    role: 'admin',
-    id: 2
-  },
-  {
-    name: 'Панормов Никита',
-    email: 'webnikler@gmail.com',
-    role: 'admin',
-    id: 3
-  },
-  {
-    name: 'Михаил Мельник',
-    email: 'toba434@gmail.com',
-    role: 'admin',
-    id: 4
-  },
-  {
-    name: 'Михаил Яньшин',
-    email: 'webnikler@gmail.com',
-    role: 'admin',
-    id: 5
-  },
-  {
-    name: 'Директор авахо',
-    email: 'toba434@gmail.com',
-    role: 'admin',
-    id: 6
-  },
-  {
-    name: 'Михаил Яньшин',
-    email: 'webnikler@gmail.com',
-    role: 'admin',
-    id: 7
-  },
-  {
-    name: 'Директор авахо',
-    email: 'toba434@gmail.com',
-    role: 'admin',
-    id: 8
-  }
-];
-
 const ITEM_HEIGHT = 48;
 
+@observer
 export default class CreateVoting extends Component {
   constructor(props) {
     super(props);
@@ -107,41 +59,10 @@ export default class CreateVoting extends Component {
       pageTitle: 'Создание голосования',
       title: '',
       description: '',
-      points: [
-        {
-          title: 'Пункт 1',
-          links: [
-            {
-              title: 'Ссылка 1',
-              url: '#'
-            },
-            {
-              title: 'Ссылка 2',
-              url: '#'
-            }
-          ]
-        },
-        {
-          title: 'Пункт 2',
-          links: []
-        }
-      ],
+      points: [],
       type: votingTypes.withTimeBounds,
       closedTime: endOfDay(new Date()),
-      selectedUsers: [
-        {
-          name: 'Никита Петров',
-          email: 'webnikler@gmail.com',
-          role: 'admin',
-          id: 1
-        },
-        {
-          name: 'Бабин Анатолий',
-          email: 'toba434@gmail.com',
-          role: 'admin',
-          id: 2
-        }
-      ],
+      selectedUsers: [],
       usersSelectionAnchorEl: null,
       findUsersText: '',
       creatorLinkModal: {
@@ -152,11 +73,14 @@ export default class CreateVoting extends Component {
     };
   }
 
+  componentDidMount() {
+    usersState.getUsers().then();
+  }
+
   getUsersSelectionList = () => {
     const { selectedUsers } = this.state;
-    const bdUsers = [...users];
-
-    return bdUsers.filter(user => !selectedUsers.find(({ id }) => id === user.id));
+    return usersState.users
+      .filter(user => !selectedUsers.find(({ id }) => id === user.id));
   };
 
   renderCreatorLinkModal = () => {
