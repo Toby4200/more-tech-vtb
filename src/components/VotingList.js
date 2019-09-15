@@ -22,17 +22,17 @@ export default class VotingList extends Component {
            renderVotingMeetingsActive = () => {
           const { history } = this.props;
           return votingsStore.votingList
-            .sort(i => i.closed ? 1 : -1)
-            .map(i => <VotingMeetings
+            .sort(voting => voting.closed ? 1 : -1)
+            .map(voting => <VotingMeetings
                         history={history}
-                        status={i.status} 
-                        closed={i.closed} 
-                        meeting={i.meeting} 
-                        admin={i.admin} 
-                        meetType={i.meetType} 
-                        id={i.id}
-                        dateOfBegin={i.dateOfBegin} 
-                        dateOfEnd={i.dateOfEnd}/>)
+                        status={voting.status}
+                        closed={voting.closed}
+                        title={voting.title}
+                        creator={voting.creator}
+                        type={voting.type}
+                        id={voting.id}
+                        createdTime={voting.createdTime}
+                        closedTime={voting.closedTime}/>)
         };
 
         componentDidMount() {

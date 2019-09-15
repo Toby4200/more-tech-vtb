@@ -1,7 +1,7 @@
 import('./styles/main.scss');
 import React from 'react';
 import { render } from 'react-dom';
-import { Route, Router, Redirect } from 'react-router-dom';
+import { Route, Router } from 'react-router-dom';
 import { Provider } from 'mobx-react';
 import { AppContainer } from 'react-hot-loader';
 import { rehydrate, hotRehydrate } from 'rfx-core';

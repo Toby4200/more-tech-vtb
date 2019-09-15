@@ -1111,7 +1111,7 @@ const init = async () => {
           // withTimeBounds
           // withoutTimeBounds
           type : 'Бессрочная',
-          closed: false,
+          closed: true,
           // dateOfBegin: '21 - 09 - 2019 13:48',
           createdTime: '01/09/2019 04:42',
           // dateOfEnd: '22 - 09 - 2019 13:40',
@@ -1222,7 +1222,7 @@ const init = async () => {
           // withTimeBounds
           // withoutTimeBounds
           type : 'Бессрочная',
-          closed: false,
+          closed: true,
           // dateOfBegin: '21 - 09 - 2019 13:48',
           createdTime: '01/09/2019 04:42',
           // dateOfEnd: '22 - 09 - 2019 13:40',
@@ -1333,7 +1333,7 @@ const init = async () => {
           // withTimeBounds
           // withoutTimeBounds
           type : 'Бессрочная',
-          closed: false,
+          closed: true,
           // dateOfBegin: '21 - 09 - 2019 13:48',
           createdTime: '01/09/2019 04:42',
           // dateOfEnd: '22 - 09 - 2019 13:40',
@@ -1444,7 +1444,7 @@ const init = async () => {
           // withTimeBounds
           // withoutTimeBounds
           type : 'Бессрочная',
-          closed: false,
+          closed: true,
           // dateOfBegin: '21 - 09 - 2019 13:48',
           createdTime: '01/09/2019 04:42',
           // dateOfEnd: '22 - 09 - 2019 13:40',
