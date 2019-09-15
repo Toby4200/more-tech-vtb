@@ -20,9 +20,11 @@ export default class VotingList extends Component {
         };
       }
            renderVotingMeetingsActive = () => {
+          const { history } = this.props;
           return votingsStore.votingList
             .sort(i => i.closed ? 1 : -1)
-            .map(i => <VotingMeetings 
+            .map(i => <VotingMeetings
+                        history={history}
                         status={i.status} 
                         closed={i.closed} 
                         meeting={i.meeting} 

@@ -8,8 +8,6 @@ import Fab from '@material-ui/core/Fab';
 import {Link, push} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-
-
 export default class VotingList extends Component {
     static propTypes={
         meeting: PropTypes.string,
@@ -24,7 +22,7 @@ export default class VotingList extends Component {
     handleBtnClick = () => {
         const { history } = this.props;
         history.push(`/voting/1`);
-    }
+    };
 
     render() {
         const isDateOfEndRender = this.props.closed || this.props.meetType=='Срочная';
@@ -50,10 +48,8 @@ export default class VotingList extends Component {
                 </div>
                 <div className='meeting-card_top'>
                 <a className='voting-entrance'>
-                        <Button variant='contained'>
-                        <Link to={`/voting/${this.prop}`} onClick={ this.handleBtnClick }>
-                                Подробнее
-                            </Link>
+                        <Button onClick={ this.handleBtnClick } variant='contained'>
+                            Подробнее
                         </Button>
                     </a>
                     <div className='item-edit'>
