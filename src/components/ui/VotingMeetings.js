@@ -7,10 +7,6 @@ import Delete from '@material-ui/icons/Delete';
 import Fab from '@material-ui/core/Fab';
 import {Link, push} from 'react-router-dom';
 import PropTypes from 'prop-types';
-import axios from 'axios';
-import { createBrowserHistory } from 'history';
-
-const history = createBrowserHistory();
 
 
 
@@ -25,18 +21,9 @@ export default class VotingList extends Component {
         status: PropTypes.string
     };
 
-    renderDateOfEnd = (date) => {
-        if (this.props.closed || this.props.meetType=='Срочная'){
-        return(
-            <React.Fragment>
-                <Typography className={'meeting-item_fivth'}>Дата окончания: </Typography>date
-            </React.Fragment>)
-        }
-    }
-
-    handleBtnClick = (id) => {
-        history.push(`/voting/${ id }`);
-        //history.push(`/login`);
+    handleBtnClick = () => {
+        const { history } = this.props;
+        history.push(`/voting/1`);
     }
 
     render() {

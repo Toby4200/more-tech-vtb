@@ -25,7 +25,6 @@ const renderApp = () => {
 			<Provider store={isProduction ? store : hotRehydrate()} >
 				<Router history={history}>
 					<div className='wrapper'>
-						<Redirect from="/" to="/login" />
 
 						<Route
 							path='/voting-list'
@@ -46,8 +45,6 @@ const renderApp = () => {
 							path='/login'
 							component={Login}
 						/>
-
-						<Redirect from="*" to="/login" />
 					</div>
 				</Router>
 			</Provider>

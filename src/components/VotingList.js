@@ -5,26 +5,22 @@ import VotingMeetings from './ui/VotingMeetings'
 import {VOITING_IST_FULL} from '../../src/pages/VotingPage'
 import {Link, push} from 'react-router-dom';
 import Button from '@material-ui/core/Button';
+import votingsStore from '../stores/votings';
+import { observer } from 'mobx-react';
 
 let userRole = 'admin';
 
+@observer
 export default class VotingList extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-          title: 'Список голосований',
-          votingList:[]
+          title: 'Список голосований'
         };
       }
-      /*componentDidMount(){
-            axios.get('http://localhost:8090/voting/1').then(res => {
-                const votingList = res.points;
-                 this.setState({votingList});
-                });
-        }*/
-           renderVotingMeetingsActive = itemList => {
-          return itemList
+           renderVotingMeetingsActive = () => {
+          return votingsStore.votingList
             .sort(i => i.closed ? 1 : -1)
             .map(i => <VotingMeetings 
                         status={i.status} 
@@ -32,12 +28,16 @@ export default class VotingList extends Component {
                         meeting={i.meeting} 
                         admin={i.admin} 
                         meetType={i.meetType} 
-                        id={i.id} 
+                        id={i.id}
                         dateOfBegin={i.dateOfBegin} 
                         dateOfEnd={i.dateOfEnd}/>)
         };
 
-        renderNewVoteButton = (role) => {
+        componentDidMount() {
+          votingsStore.getVotings().then();
+        }
+
+  renderNewVoteButton = (role) => {
             const { history } = this.props;
             if (role === 'admin'){
                 return(
