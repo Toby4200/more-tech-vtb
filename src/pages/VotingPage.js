@@ -1,211 +1,43 @@
 import React, { Component } from 'react';
 import Typography from "@material-ui/core/Typography";
-// import Divider from "@material-ui/core/Divider";
 import Container from "@material-ui/core/Container";
 
-import ListSubheader from '@material-ui/core/ListSubheader';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-// import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-// import Collapse from '@material-ui/core/Collapse';
-// import InboxIcon from '@material-ui/icons/MoveToInbox';
-// import DraftsIcon from '@material-ui/icons/Drafts';
-import SendIcon from '@material-ui/icons/Send';
 import HourglassEmptyIcon from '@material-ui/icons/HourglassEmpty';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar'
-
-import Link from '@material-ui/core/Link';
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 
 import Countdown from 'react-countdown-now';
 import Avatar from '@material-ui/core/Avatar';
 import Chip from '@material-ui/core/Chip';
 import ImageIcon from '@material-ui/icons/Image';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
+import StarRateIcon from '@material-ui/icons/StarRate';
+
+import lodash from 'lodash';
+
+import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
+import ThumbDownAltIcon from '@material-ui/icons/ThumbDownAlt';
 
 // card
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
-
-
-export const VOITING_IST_FULL = [
-
-  {
-    title: 'Переезд в новый офис',
-    description: 'Мы хотим переехать в новый офис. Наш текущий офис начинает заканчиваться ' +
-      'нам необходимо большее пространство. Так же хочется выглядеть более презентабильно в целом ' +
-      'перед нашими заказчиками. А так же повысить комфорт для своей команды. Так же хочется ' +
-      'чтобы можно было приглашать людей для знакомства в наш офис - в нем должно быть комфортно ',
-    points: [
-      {
-        title: 'Заказать кофе машину',
-        links: [
-          {
-            text: 'кофе-машина.pdf',
-            url: 'https://material-ui.com/api/divider/'
-          },
-          {
-            title: 'монитор.pdf',
-            url: 'https://material-ui.com/api/divider/'
-          },
-
-          {
-            title: 'стул.pdf',
-            url: 'https://material-ui.com/api/divider/'
-          },
-        ]
-      },
-      {
-        title: 'Купить мониторы',
-        links: [
-          {
-            title: 'кофе-машина.pdf',
-            url: 'https://material-ui.com/api/divider/'
-          },
-        ]
-      },
-      {
-        title: 'Заказать стулья',
-        links: [
-          {
-            title: 'кофе-машина.pdf',
-            url: 'https://material-ui.com/api/divider/'
-          },
-        ]
-      },
-      {
-        title: 'Заказать массажистку',
-        links: [
-          {
-            title: 'монитор.pdf',
-            url: 'https://material-ui.com/api/divider/'
-          },
-
-          {
-            title: 'стул.pdf',
-            url: 'https://material-ui.com/api/divider/'
-          },
-        ]
-      },
-    ],
-    admin : 'Владимир Раменский',
-    // был meetType
-    // withTimeBounds
-    // withoutTimeBounds
-    type : 'Бессрочная',
-    closed: false,
-    id: '1',
-    // dateOfBegin: '21 - 09 - 2019 13:48',
-    createdTime: '21 - 09 - 2019 13:48',
-    // dateOfEnd: '22 - 09 - 2019 13:40',
-    closedTime: '22 - 09 - 2019 13:40',
-    status: 'В работе'
-  },
-  {
-    meeting : 'Удалить сайт новостроек',
-    admin : 'Владимир Раменский',
-    meetType : 'Бессрочная',
-    closed: true,
-    id: '2',
-    dateOfBegin: '20 - 09 - 2019 12:39',
-    dateOfEnd: '20 - 09 - 2019 13:40',
-    status: 'Согласовано'
-  },
-  {
-    meeting : 'Обед',
-    admin : 'Владимир Раменский',
-    meetType : 'Срочная',
-    closed: false,
-    id: '3',
-    dateOfBegin:'19 - 09 - 2019 21:39',
-    dateOfEnd: '19 - 09 - 2019 22:00',
-    status: 'В работе'
-  },
-  {
-    meeting : 'Планирование развития',
-    admin : 'Дмитрий Корчагин',
-    meetType : 'Бессрочная',
-    closed: true,
-    id: '4',
-    dateOfBegin: '18 - 09 - 2019 20:39',
-    dateOfEnd: '18 - 09 - 2019 23:40',
-    status: 'Несогласовано'
-  }
-];
-
-// То, что придет с бэка как ответ на voiting/:id
-const VOITING_ITEM = {
-  title: 'Переезд в новый офис',
-  description: 'Мы хотим переехать в новый офис. Наш текущий офис начинает заканчиваться ' +
-    'нам необходимо большее пространство. Так же хочется выглядеть более презентабильно в целом ' +
-    'перед нашими заказчиками. А так же повысить комфорт для своей команды. Так же хочется ' +
-    'чтобы можно было приглашать людей для знакомства в наш офис - в нем должно быть комфортно ',
-  points: [
-    {
-      title: 'Заказать кофе машину',
-      links: [
-        {
-          title: 'кофе-машина.pdf',
-          url: 'https://material-ui.com/api/divider/'
-        },
-        {
-          title: 'монитор.pdf',
-          url: 'https://material-ui.com/api/divider/'
-        },
-
-        {
-          title: 'стул.pdf',
-          url: 'https://material-ui.com/api/divider/'
-        },
-      ]
-    },
-    {
-      title: 'Купить мониторы',
-      links: [
-        {
-          title: 'кофе-машина.pdf',
-          url: 'https://material-ui.com/api/divider/'
-        },
-      ]
-    },
-    {
-      title: 'Заказать стулья',
-      links: [
-        {
-          title: 'кофе-машина.pdf',
-          url: 'https://material-ui.com/api/divider/'
-        },
-      ]
-    },
-    {
-      title: 'Заказать массажистку',
-      links: [
-        {
-          title: 'монитор.pdf',
-          url: 'https://material-ui.com/api/divider/'
-        },
-
-        {
-          title: 'стул.pdf',
-          url: 'https://material-ui.com/api/divider/'
-        },
-      ]
-    },
-
-  ]
-};
+import axios from 'axios';
 
 const renderer = ({ hours, minutes, seconds, completed }) => {
   if (completed) {
     return <div className="timer_done">Встреча окончена</div>;
   } else {
     return (<div className="timer">
-      <div className="timer__icon">
-        <HourglassEmptyIcon/>
-      </div>
+      {/*<div className="timer__icon">*/}
+      {/*  <HourglassEmptyIcon/>*/}
+      {/*</div>*/}
 
       <div className="timer__countdown-container">
+        <span className="timer__rest">Осталось </span>
         {
           hours ? <span className="timer__item timer__hours">{hours} <span className="timer__word">ч</span> : </span> : ''
         }
@@ -225,21 +57,30 @@ export default class VotingPage extends Component {
     super(props);
 
     this.state = {
-      title: 'Страница голосования'
+      title: 'Страница голосования',
+      voting: {}
     };
   }
 
   componentDidMount() {
     const { id } = this.props.match.params
-
     console.log('id', id)
+
+    axios.get('http://localhost:8090/voting/1')
+      .then((res) => {
+        const {
+          data = {}
+        } = res;
+
+        this.setState({
+          voting: data
+        }, () => {
+          console.log('this.state', this.state)
+        })
+      });
   }
 
-  renderPoints = () => {
-    const {
-      points = []
-    } = VOITING_LIST_FULL;
-
+  renderPoints = (points) => {
     const listItems = points.map((point) => {
       const {
         title,
@@ -247,11 +88,17 @@ export default class VotingPage extends Component {
       } = point;
 
       return (
-        <div>
-          <ListItem>
+        <div className="points__container">
+          <ListItem className="points__item">
             <ListItemText
               primary={ title }
+              className="points__item-text"
             />
+
+            <div className="points__votes-container vote">
+              <ThumbDownAltIcon/>
+              <ThumbUpAltIcon/>
+            </div>
           </ListItem>
 
           <List
@@ -286,6 +133,8 @@ export default class VotingPage extends Component {
             clickable
             href={ url }
             component="a"
+            color="primary"
+            variant="outlined"
           >
           </Chip>
         </ListItem>
@@ -305,8 +154,16 @@ export default class VotingPage extends Component {
     )
   }
 
-  renderParticipants = () => {
-    const participants = [1,2,3,4].map(() => {
+  renderParticipants = (participants, creator) => {
+    const { id: creatorId } = creator;
+
+    const kents = participants.map((kent) => {
+      const {
+        email = '',
+        name = '',
+        id = 0
+      } = kent;
+
       return (
         <ListItem>
           <ListItemAvatar>
@@ -314,15 +171,33 @@ export default class VotingPage extends Component {
               <ImageIcon />
             </Avatar>
           </ListItemAvatar>
-          <ListItemText primary="Photos" secondary="Jan 9, 2014" />
+          <ListItemText primary={name} secondary={email} />
+
+          {
+            (creatorId === id) ? <ListItemSecondaryAction>
+              <IconButton edge="end" aria-label="delete">
+                <StarRateIcon label="Кек"/>
+              </IconButton>
+            </ListItemSecondaryAction> : ''
+          }
         </ListItem>
       )
     });
 
-    return participants;
+    return kents;
   }
 
   render() {
+    const {
+      voting = {}
+    } = this.state;
+
+    const title = lodash.get(voting, ['title'], '');
+    const description = lodash.get(voting, ['description'], '');
+    const points = lodash.get(voting, ['points'], []);
+
+    const participants = lodash.get(voting, ['participants'], []);
+    const creator = lodash.get(voting, ['creator'], {});
 
     return (
       <Container maxWidth="lg" className="voting">
@@ -346,10 +221,10 @@ export default class VotingPage extends Component {
 
             {/* Тут будет плашка */}
 
-            <Typography variant="h1" gutterBottom className="voting__title">{VOITING_ITEM.title}</Typography>
+            <Typography variant="h1" gutterBottom className="voting__title">{title}</Typography>
 
             <Typography variant="h4" gutterBottom className="voting__description">Описание</Typography>
-            <div variant="h4"className="voting__description-text">{VOITING_ITEM.description}</div>
+            <div variant="h4"className="voting__description-text">{description}</div>
 
             <List
               component="nav"
@@ -358,7 +233,7 @@ export default class VotingPage extends Component {
             >
               <span className="points__title">Список пунктов для согласования</span>
               {
-                this.renderPoints()
+                this.renderPoints(points)
               }
             </List>
 
@@ -367,30 +242,12 @@ export default class VotingPage extends Component {
           <div className="voting__right-container">
             <Card className={"classes"}>
               <CardContent>
-                {/*<Typography className={classes.title} color="textSecondary" gutterBottom>*/}
-                {/*  Word of the Day*/}
-                {/*</Typography>*/}
-                {/*<Typography variant="h5" component="h2">*/}
-                {/*  be*/}
-                {/*  {bull}*/}
-                {/*  nev*/}
-                {/*  {bull}o{bull}*/}
-                {/*  lent*/}
-                {/*</Typography>*/}
-                {/*<Typography className={classes.pos} color="textSecondary">*/}
-                {/*  adjective*/}
-                {/*</Typography>*/}
-                {/*<Typography variant="body2" component="p">*/}
-                {/*  well meaning and kindly.*/}
-                {/*  <br />*/}
-                {/*  {'"a benevolent smile"'}*/}
-                {/*</Typography>*/}
                 <div className="people">
                   <span className="people__title">Участники</span>
 
                   <List className="people__list" >
                     {
-                      this.renderParticipants()
+                      this.renderParticipants(participants, creator)
                     }
                   </List>
                 </div>

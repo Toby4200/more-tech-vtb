@@ -13,6 +13,10 @@ class Login extends Component {
   handleClick = (e) => {
     e.preventDefault();
 
+    // console.log(this.state.login);
+    // console.log(this.state.role)
+    // console.log(this.state.password);
+
     axios.post('https://next.json-generator.com/api/json/get/N17f3gUUP', {
       login: this.state.firstName,
       password: this.state.password,
@@ -21,7 +25,7 @@ class Login extends Component {
       .then((res) => {
         console.log('res', res.data);
       })
-  };
+  }
 
   handleChange = (inputName, event) => {
     this.setState({ [inputName]:event.target.value});
