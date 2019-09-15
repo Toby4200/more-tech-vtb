@@ -1,5 +1,5 @@
 import { observable, action } from 'mobx';
-import axios from 'axios';
+import api from '../api';
 
 export const Roles = {
   admin: 'admin',
@@ -7,7 +7,7 @@ export const Roles = {
   guest: 'guest'
 };
 
-export default class UserState {
+class UserState {
   @observable name;
   @observable email;
   @observable role;
@@ -21,7 +21,7 @@ export default class UserState {
   }
 
   async getUser(email) {
-    const data = await axios.post('http://localhost:8090/auth', {
+    const { data } = await api.post('http://localhost:8090/auth', {
       email
     });
 
@@ -35,3 +35,5 @@ export default class UserState {
     this.id = id;
   }
 }
+
+export default new UserState();

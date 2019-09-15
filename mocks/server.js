@@ -97,7 +97,7 @@ const init = async () => {
 
   server.route({
     method: 'GET',
-    path: '/voting/1',
+    path: '/users',
     handler: function (request, h) {
       return [
         {
