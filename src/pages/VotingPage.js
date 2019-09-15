@@ -13,24 +13,91 @@ import ListItemText from '@material-ui/core/ListItemText';
 // import DraftsIcon from '@material-ui/icons/Drafts';
 import SendIcon from '@material-ui/icons/Send';
 import HourglassEmptyIcon from '@material-ui/icons/HourglassEmpty';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar'
 
 import Link from '@material-ui/core/Link';
 
 import Countdown from 'react-countdown-now';
 import Avatar from '@material-ui/core/Avatar';
 import Chip from '@material-ui/core/Chip';
-// import FaceIcon from '@material-ui/icons/Face';
-// import DoneIcon from '@material-ui/icons/Done';
+import ImageIcon from '@material-ui/icons/Image';
 
-const VOITING_IST_FULL = [
+// card
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Button from '@material-ui/core/Button';
+
+const VOITING_LIST_FULL = [
   {
-    meeting : 'Согласование переезда',
+    title: 'Переезд в новый офис',
+    description: 'Мы хотим переехать в новый офис. Наш текущий офис начинает заканчиваться ' +
+      'нам необходимо большее пространство. Так же хочется выглядеть более презентабильно в целом ' +
+      'перед нашими заказчиками. А так же повысить комфорт для своей команды. Так же хочется ' +
+      'чтобы можно было приглашать людей для знакомства в наш офис - в нем должно быть комфортно ',
+    points: [
+      {
+        title: 'Заказать кофе машину',
+        links: [
+          {
+            text: 'кофе-машина.pdf',
+            url: 'https://material-ui.com/api/divider/'
+          },
+          {
+            title: 'монитор.pdf',
+            url: 'https://material-ui.com/api/divider/'
+          },
+
+          {
+            title: 'стул.pdf',
+            url: 'https://material-ui.com/api/divider/'
+          },
+        ]
+      },
+      {
+        title: 'Купить мониторы',
+        links: [
+          {
+            title: 'кофе-машина.pdf',
+            url: 'https://material-ui.com/api/divider/'
+          },
+        ]
+      },
+      {
+        title: 'Заказать стулья',
+        links: [
+          {
+            title: 'кофе-машина.pdf',
+            url: 'https://material-ui.com/api/divider/'
+          },
+        ]
+      },
+      {
+        title: 'Заказать массажистку',
+        links: [
+          {
+            title: 'монитор.pdf',
+            url: 'https://material-ui.com/api/divider/'
+          },
+
+          {
+            title: 'стул.pdf',
+            url: 'https://material-ui.com/api/divider/'
+          },
+        ]
+      },
+    ],
     admin : 'Владимир Раменский',
-    meetType : 'Бессрочная',
+    // был meetType
+    // withTimeBounds
+    // withoutTimeBounds
+    type : 'Бессрочная',
     closed: false,
     id: '1',
-    dateOfBegin: '21 - 09 - 2019 13:48',
-    dateOfEnd: '22 - 09 - 2019 13:40',
+    // dateOfBegin: '21 - 09 - 2019 13:48',
+    createdTime: '21 - 09 - 2019 13:48',
+    // dateOfEnd: '22 - 09 - 2019 13:40',
+    closedTime: '22 - 09 - 2019 13:40',
     status: 'В работе'
   },
   {
@@ -77,17 +144,17 @@ const VOITING_ITEM = {
       title: 'Заказать кофе машину',
       links: [
         {
-          linkText: 'кофе-машина.pdf',
-          linkHref: 'https://material-ui.com/api/divider/'
+          title: 'кофе-машина.pdf',
+          url: 'https://material-ui.com/api/divider/'
         },
         {
-          linkText: 'монитор.pdf',
-          linkHref: 'https://material-ui.com/api/divider/'
+          title: 'монитор.pdf',
+          url: 'https://material-ui.com/api/divider/'
         },
 
         {
-          linkText: 'стул.pdf',
-          linkHref: 'https://material-ui.com/api/divider/'
+          title: 'стул.pdf',
+          url: 'https://material-ui.com/api/divider/'
         },
       ]
     },
@@ -95,8 +162,8 @@ const VOITING_ITEM = {
       title: 'Купить мониторы',
       links: [
         {
-          linkText: 'кофе-машина.pdf',
-          linkHref: 'https://material-ui.com/api/divider/'
+          title: 'кофе-машина.pdf',
+          url: 'https://material-ui.com/api/divider/'
         },
       ]
     },
@@ -104,8 +171,8 @@ const VOITING_ITEM = {
       title: 'Заказать стулья',
       links: [
         {
-          linkText: 'кофе-машина.pdf',
-          linkHref: 'https://material-ui.com/api/divider/'
+          title: 'кофе-машина.pdf',
+          url: 'https://material-ui.com/api/divider/'
         },
       ]
     },
@@ -113,13 +180,13 @@ const VOITING_ITEM = {
       title: 'Заказать массажистку',
       links: [
         {
-          linkText: 'монитор.pdf',
-          linkHref: 'https://material-ui.com/api/divider/'
+          title: 'монитор.pdf',
+          url: 'https://material-ui.com/api/divider/'
         },
 
         {
-          linkText: 'стул.pdf',
-          linkHref: 'https://material-ui.com/api/divider/'
+          title: 'стул.pdf',
+          url: 'https://material-ui.com/api/divider/'
         },
       ]
     },
@@ -169,7 +236,7 @@ export default class VotingPage extends Component {
   renderPoints = () => {
     const {
       points = []
-    } = VOITING_ITEM;
+    } = VOITING_LIST_FULL;
 
     const listItems = points.map((point) => {
       const {
@@ -205,24 +272,20 @@ export default class VotingPage extends Component {
   renderLinks = (links) => {
     const renderLinks = links.map((link) => {
       const {
-        linkText,
-        linkHref,
+        title,
+        url,
       } = link;
 
       return (
         <ListItem className="link__item" >
           <Chip
-            label={ linkText }
+            label={ title }
             className="class"
             clickable
-            href={ linkHref }
+            href={ url }
             component="a"
           >
           </Chip>
-
-          {/*<Link href={linkHref}>*/}
-          {/*  <ListItemText primary={linkText} />*/}
-          {/*</Link>*/}
         </ListItem>
       )
     });
@@ -240,6 +303,23 @@ export default class VotingPage extends Component {
     )
   }
 
+  renderParticipants = () => {
+    const participants = [1,2,3,4].map(() => {
+      return (
+        <ListItem>
+          <ListItemAvatar>
+            <Avatar>
+              <ImageIcon />
+            </Avatar>
+          </ListItemAvatar>
+          <ListItemText primary="Photos" secondary="Jan 9, 2014" />
+        </ListItem>
+      )
+    });
+
+    return participants;
+  }
+
   render() {
 
     return (
@@ -253,11 +333,6 @@ export default class VotingPage extends Component {
               <div className="status">
                 <span className="status__title">Статус | </span>
                 <span className="status__description">in progress</span>
-
-                {/* Может пригодиться во втором статусе */}
-                {/*<span className="status__icon">*/}
-                {/*<SendIcon/>*/}
-                {/*</span>*/}
               </div>
 
               {
@@ -266,7 +341,6 @@ export default class VotingPage extends Component {
             </div>
 
             <div className="divider"></div>
-
 
             {/* Тут будет плашка */}
 
@@ -289,10 +363,37 @@ export default class VotingPage extends Component {
           </div>
 
           <div className="voting__right-container">
-            <div className="people">
+            <Card className={"classes"}>
+              <CardContent>
+                {/*<Typography className={classes.title} color="textSecondary" gutterBottom>*/}
+                {/*  Word of the Day*/}
+                {/*</Typography>*/}
+                {/*<Typography variant="h5" component="h2">*/}
+                {/*  be*/}
+                {/*  {bull}*/}
+                {/*  nev*/}
+                {/*  {bull}o{bull}*/}
+                {/*  lent*/}
+                {/*</Typography>*/}
+                {/*<Typography className={classes.pos} color="textSecondary">*/}
+                {/*  adjective*/}
+                {/*</Typography>*/}
+                {/*<Typography variant="body2" component="p">*/}
+                {/*  well meaning and kindly.*/}
+                {/*  <br />*/}
+                {/*  {'"a benevolent smile"'}*/}
+                {/*</Typography>*/}
+                <div className="people">
+                  <span className="people__title">Участники</span>
 
-
-            </div>
+                  <List className="people__list" >
+                    {
+                      this.renderParticipants()
+                    }
+                  </List>
+                </div>
+              </CardContent>
+            </Card>
 
             <div className="chat">
 
