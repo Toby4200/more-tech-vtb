@@ -68,7 +68,7 @@ export default class VotingPage extends Component {
     const { id } = this.props.match.params;
 
     this.setState({
-      voting: votingState.getVotingById(Number(id))
+      voting: votingState.getVotingById(id)
     });
   }
 
