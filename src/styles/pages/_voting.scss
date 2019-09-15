@@ -1,0 +1,187 @@
+.voting {
+  padding-top: 50px;
+
+  &__container {
+    display: flex;
+    flex: 1 0 auto;
+
+
+    padding: 20px;
+  }
+
+  &__left-container {
+    padding: 0 20px;
+  }
+
+  &__right-container {
+    padding: 0 20px;
+    flex-basis: 400px;
+    min-width: 350px;
+
+    //background: #0000000a;
+  }
+
+
+  &__title {
+    font-size: 40px;
+    font-weight: 400;
+
+    margin-bottom: 35px;
+  }
+
+  &__description {
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+
+  &__description-text {
+    font-size: 20px;
+    background: #0000000d;
+
+    padding: 20px;
+    margin-bottom: 50px;
+  }
+}
+
+.points {
+  display: flex;
+  flex-direction: column;
+
+  &__container {
+    margin-bottom: 10px;
+  }
+
+  &__title {
+    font-size: 25px;
+  }
+
+  &__item {
+    padding-left: 0;
+    margin-bottom: -6px;
+  }
+
+  &__item-text {
+    //font-size: 18px;
+  }
+
+  &__thumb {
+    cursor: pointer;
+  }
+
+  &__thumb-up {
+    margin-right: 15px;
+
+  }
+
+  &__thumb-down {
+
+  }
+}
+
+.link {
+  display: flex;
+  justify-content: flex-start;
+  flex: 0 1 auto;
+  margin-left: -10px;
+
+  &__item {
+    margin-bottom: -6px;
+    width: auto;
+    padding: 10px;
+  }
+
+  &__a {
+    margin-right: 0;
+  }
+}
+
+.voting-header {
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: 15px;
+}
+
+.status {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__title {
+    font-size: 22px;
+    font-weight: bold;
+    margin-right: 5px;
+  }
+
+  &__description {
+    font-size: 18px;
+    font-style: italic;
+    margin-right: 5px;
+    color: green;
+  }
+
+  &__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.timer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__item {
+    font-style: italic;
+  }
+
+  &__icon {
+    display: flex;
+    justify-content: flex-end;
+
+  }
+
+  &__word {
+    font-size: 12px;
+  }
+
+  &_done {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.people {
+  width: 100%;
+  padding-top: 20px;
+
+  &__wrapper {
+    margin-top: 50px;
+  }
+
+  &__title {
+    font-size: 20px;
+    font-weight: bold;
+    padding-left: 20px;
+  }
+
+  &__avatar {
+    margin-right: 15px;
+  }
+
+  &__img {
+    width: 45px;
+  }
+}
+
+.divider {
+  border-bottom: 1px solid #00000014;
+  margin-bottom: 30px;
+}
+
+.vote {
+  width: 100px;
+  margin-left: 20px;
+}
