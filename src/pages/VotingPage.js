@@ -1,32 +1,28 @@
 import React, { Component } from 'react';
 import Typography from "@material-ui/core/Typography";
-// import Divider from "@material-ui/core/Divider";
 import Container from "@material-ui/core/Container";
 
-import ListSubheader from '@material-ui/core/ListSubheader';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-// import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 // import Collapse from '@material-ui/core/Collapse';
 // import InboxIcon from '@material-ui/icons/MoveToInbox';
 // import DraftsIcon from '@material-ui/icons/Drafts';
-import SendIcon from '@material-ui/icons/Send';
+// import SendIcon from '@material-ui/icons/Send';
 import HourglassEmptyIcon from '@material-ui/icons/HourglassEmpty';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar'
-
-import Link from '@material-ui/core/Link';
 
 import Countdown from 'react-countdown-now';
 import Avatar from '@material-ui/core/Avatar';
 import Chip from '@material-ui/core/Chip';
 import ImageIcon from '@material-ui/icons/Image';
+import lodash from 'lodash';
 
 // card
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
+
+import axios from 'axios';
 
 const VOITING_LIST_FULL = [
   {
@@ -223,20 +219,34 @@ export default class VotingPage extends Component {
     super(props);
 
     this.state = {
-      title: 'Страница голосования'
+      title: 'Страница голосования',
+      voting: {}
     };
   }
 
   componentDidMount() {
     const { id } = this.props.match.params
-
     console.log('id', id)
+
+    axios.get('http://localhost:8090/voting/1')
+      .then((res) => {
+        const {
+          data = {}
+        } = res;
+
+        this.setState({
+          voting: data
+        }, () => {
+          console.log('this.state', this.state)
+        })
+      });
   }
 
-  renderPoints = () => {
-    const {
-      points = []
-    } = VOITING_LIST_FULL;
+  renderPoints = (points) => {
+    // const {
+    //   points = []
+    // } = VOITING_LIST_FULL;
+
 
     const listItems = points.map((point) => {
       const {
@@ -321,6 +331,17 @@ export default class VotingPage extends Component {
   }
 
   render() {
+    const {
+      voting = {}
+    } = this.state;
+
+    const title = lodash.get(voting, ['title'], '');
+    const description = lodash.get(voting, ['description'], '');
+    const points = lodash.get(voting, ['points'], []);
+
+    // const title = lodash.get(voting, ['title']);
+    // const title = lodash.get(voting, ['title']);
+    // const title = lodash.get(voting, ['title']);
 
     return (
       <Container maxWidth="lg" className="voting">
@@ -344,10 +365,10 @@ export default class VotingPage extends Component {
 
             {/* Тут будет плашка */}
 
-            <Typography variant="h1" gutterBottom className="voting__title">{VOITING_ITEM.title}</Typography>
+            <Typography variant="h1" gutterBottom className="voting__title">{title}</Typography>
 
             <Typography variant="h4" gutterBottom className="voting__description">Описание</Typography>
-            <div variant="h4"className="voting__description-text">{VOITING_ITEM.description}</div>
+            <div variant="h4"className="voting__description-text">{description}</div>
 
             <List
               component="nav"
@@ -356,7 +377,7 @@ export default class VotingPage extends Component {
             >
               <span className="points__title">Список пунктов для согласования</span>
               {
-                this.renderPoints()
+                this.renderPoints(points)
               }
             </List>
 
