@@ -36,7 +36,7 @@ export default class VotingList extends Component {
         };
 
         componentDidMount() {
-          votingsStore.getVotings().then();
+          votingsStore.getList().then();
         }
 
   renderNewVoteButton = (role) => {
