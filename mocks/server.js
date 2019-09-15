@@ -100,6 +100,27 @@ const init = async () => {
 
 };
 
+// rzd
+server.route({
+  method: 'POST',
+  path: '/auth',
+  handler: function (request, h) {
+    switch (request.payload.username) {
+      case "toba@klevertech.fun" :
+        return {
+          role: "admin",
+        };
+      case "myanshin@klevertech.fun" :
+        return {
+          role: "user",
+        };
+    }
+
+    // Не авторизовывать если нет данных
+  }
+});
+
+
 process.on('unhandledRejection', (err) => {
 
   console.log(err);
