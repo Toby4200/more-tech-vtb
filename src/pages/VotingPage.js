@@ -11,11 +11,16 @@ import ListItemText from '@material-ui/core/ListItemText';
 // import SendIcon from '@material-ui/icons/Send';
 import HourglassEmptyIcon from '@material-ui/icons/HourglassEmpty';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar'
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 
 import Countdown from 'react-countdown-now';
 import Avatar from '@material-ui/core/Avatar';
 import Chip from '@material-ui/core/Chip';
 import ImageIcon from '@material-ui/icons/Image';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
+import StarRateIcon from '@material-ui/icons/StarRate';
+
 import lodash from 'lodash';
 
 // card
@@ -243,11 +248,6 @@ export default class VotingPage extends Component {
   }
 
   renderPoints = (points) => {
-    // const {
-    //   points = []
-    // } = VOITING_LIST_FULL;
-
-
     const listItems = points.map((point) => {
       const {
         title,
@@ -313,8 +313,17 @@ export default class VotingPage extends Component {
     )
   }
 
-  renderParticipants = () => {
-    const participants = [1,2,3,4].map(() => {
+  renderParticipants = (participants, creator) => {
+    const { id: creatorId } = creator;
+
+    const kents = participants.map((kent) => {
+      const {
+        email = '',
+        name = '',
+        id = 0
+      } = kent;
+      console.log('kent', kent)
+
       return (
         <ListItem>
           <ListItemAvatar>
@@ -322,12 +331,20 @@ export default class VotingPage extends Component {
               <ImageIcon />
             </Avatar>
           </ListItemAvatar>
-          <ListItemText primary="Photos" secondary="Jan 9, 2014" />
+          <ListItemText primary={name} secondary={email} />
+
+          {
+            (creatorId === id) ? <ListItemSecondaryAction>
+              <IconButton edge="end" aria-label="delete">
+                <StarRateIcon label="Кек"/>
+              </IconButton>
+            </ListItemSecondaryAction> : ''
+          }
         </ListItem>
       )
     });
 
-    return participants;
+    return kents;
   }
 
   render() {
@@ -338,6 +355,9 @@ export default class VotingPage extends Component {
     const title = lodash.get(voting, ['title'], '');
     const description = lodash.get(voting, ['description'], '');
     const points = lodash.get(voting, ['points'], []);
+
+    const participants = lodash.get(voting, ['participants'], []);
+    const creator = lodash.get(voting, ['creator'], {});
 
     // const title = lodash.get(voting, ['title']);
     // const title = lodash.get(voting, ['title']);
@@ -386,30 +406,12 @@ export default class VotingPage extends Component {
           <div className="voting__right-container">
             <Card className={"classes"}>
               <CardContent>
-                {/*<Typography className={classes.title} color="textSecondary" gutterBottom>*/}
-                {/*  Word of the Day*/}
-                {/*</Typography>*/}
-                {/*<Typography variant="h5" component="h2">*/}
-                {/*  be*/}
-                {/*  {bull}*/}
-                {/*  nev*/}
-                {/*  {bull}o{bull}*/}
-                {/*  lent*/}
-                {/*</Typography>*/}
-                {/*<Typography className={classes.pos} color="textSecondary">*/}
-                {/*  adjective*/}
-                {/*</Typography>*/}
-                {/*<Typography variant="body2" component="p">*/}
-                {/*  well meaning and kindly.*/}
-                {/*  <br />*/}
-                {/*  {'"a benevolent smile"'}*/}
-                {/*</Typography>*/}
                 <div className="people">
                   <span className="people__title">Участники</span>
 
                   <List className="people__list" >
                     {
-                      this.renderParticipants()
+                      this.renderParticipants(participants, creator)
                     }
                   </List>
                 </div>

@@ -31,10 +31,6 @@ const init = async () => {
             title: 'Заказать кофе машину',
             links: [
               {
-                text: 'кофе-машина.pdf',
-                url: 'https://material-ui.com/api/divider/'
-              },
-              {
                 title: 'монитор.pdf',
                 url: 'https://material-ui.com/api/divider/'
               },
@@ -78,7 +74,51 @@ const init = async () => {
             ]
           },
         ],
-        admin : 'Владимир Раменский',
+        participants: [
+          {
+            id: 1,
+            name: 'Бабин Анатолий',
+            email: 'toba@klevertech.fun',
+            role: 'admin'
+          },
+          {
+            id: 2,
+            name: 'Петров Никита',
+            email: 'webnikler@klevertech.fun',
+            role: 'admin'
+          },
+          {
+            id: 3,
+            name: 'Панормов Никита',
+            email: 'npanormov@klevertech.fun',
+            role: 'user'
+          },
+          {
+            id: 4,
+            name: 'Мельник Михаил',
+            email: 'mmelnik@klevertech.fun',
+            role: 'user'
+          },
+          {
+            id: 5,
+            name: 'Яньшин Михаил',
+            email: 'myanshin@klevertech.fun',
+            role: 'user'
+          },
+          {
+            id: 6,
+            name: 'Василий Василькин',
+            email: 'vv@klevertech.fun',
+            role: 'user'
+          },
+
+        ],
+        creator: {
+          id: 1,
+          name: 'Бабин Анатолий',
+          email: 'toba@klevertech.fun',
+          role: 'admin'
+        },
         // был meetType
         // withTimeBounds
         // withoutTimeBounds
