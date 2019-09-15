@@ -21,8 +21,77 @@ const init = async () => {
     path: '/voting/1',
     handler: function (request, h) {
       return {
-        "status": "In the pipeline!"
+        title: 'Переезд в новый офис',
+        description: 'Мы хотим переехать в новый офис. Наш текущий офис начинает заканчиваться ' +
+          'нам необходимо большее пространство. Так же хочется выглядеть более презентабильно в целом ' +
+          'перед нашими заказчиками. А так же повысить комфорт для своей команды. Так же хочется ' +
+          'чтобы можно было приглашать людей для знакомства в наш офис - в нем должно быть комфортно ',
+        points: [
+          {
+            title: 'Заказать кофе машину',
+            links: [
+              {
+                text: 'кофе-машина.pdf',
+                url: 'https://material-ui.com/api/divider/'
+              },
+              {
+                title: 'монитор.pdf',
+                url: 'https://material-ui.com/api/divider/'
+              },
+
+              {
+                title: 'стул.pdf',
+                url: 'https://material-ui.com/api/divider/'
+              },
+            ]
+          },
+          {
+            title: 'Купить мониторы',
+            links: [
+              {
+                title: 'кофе-машина.pdf',
+                url: 'https://material-ui.com/api/divider/'
+              },
+            ]
+          },
+          {
+            title: 'Заказать стулья',
+            links: [
+              {
+                title: 'кофе-машина.pdf',
+                url: 'https://material-ui.com/api/divider/'
+              },
+            ]
+          },
+          {
+            title: 'Заказать массажистку',
+            links: [
+              {
+                title: 'монитор.pdf',
+                url: 'https://material-ui.com/api/divider/'
+              },
+
+              {
+                title: 'стул.pdf',
+                url: 'https://material-ui.com/api/divider/'
+              },
+            ]
+          },
+        ],
+        admin : 'Владимир Раменский',
+        // был meetType
+        // withTimeBounds
+        // withoutTimeBounds
+        type : 'Бессрочная',
+        closed: false,
+        id: '1',
+        // dateOfBegin: '21 - 09 - 2019 13:48',
+        createdTime: '01/09/2019 04:42',
+        // dateOfEnd: '22 - 09 - 2019 13:40',
+        closedTime: '01/09/2019 04:42',
+        status: 'В работе'
       }
+
     }
   });
 
